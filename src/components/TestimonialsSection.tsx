@@ -2,9 +2,11 @@
 import { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const TestimonialsSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const { t } = useLanguage();
 
   const testimonials = [
     {
@@ -55,9 +57,9 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('testimonials.title')}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Read testimonials from satisfied customers who trust us with their transportation needs
+            {t('testimonials.subtitle')}
           </p>
         </div>
 

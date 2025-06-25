@@ -1,8 +1,11 @@
 
 import { Phone, Clock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="relative bg-gradient-to-r from-medical-blue-light to-white py-20 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -10,31 +13,30 @@ const HeroSection = () => {
           {/* Hero Content */}
           <div className="animate-fade-in">
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Private <span className="text-medical-blue">Ambulance</span> & 
-              <span className="text-emergency-amber"> Taxi Service</span>
+              {t('hero.title.private')} <span className="text-medical-blue">{t('hero.title.ambulance')}</span> {t('hero.title.and')} 
+              <span className="text-emergency-amber"> {t('hero.title.taxi')}</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Professional medical transport and taxi services in Frankfurt and surrounding areas. 
-              Available 24/7 with trained staff and fast response times.
+              {t('hero.description')}
             </p>
             
             {/* Key Features */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="flex items-center space-x-2">
                 <Clock className="h-5 w-5 text-medical-blue" />
-                <span className="text-gray-700">24/7 Available</span>
+                <span className="text-gray-700">{t('hero.feature.24_7')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Shield className="h-5 w-5 text-medical-blue" />
-                <span className="text-gray-700">Certified Staff</span>
+                <span className="text-gray-700">{t('hero.feature.certified')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="h-5 w-5 text-medical-blue" />
-                <span className="text-gray-700">Patient Care</span>
+                <span className="text-gray-700">{t('hero.feature.patient_care')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-medical-blue" />
-                <span className="text-gray-700">Fast Response</span>
+                <span className="text-gray-700">{t('hero.feature.fast_response')}</span>
               </div>
             </div>
 
@@ -45,14 +47,14 @@ const HeroSection = () => {
                 className="bg-emergency-amber hover:bg-emergency-amber-dark text-white text-lg px-8 py-4 animate-pulse-glow"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                Emergency Call Now
+                {t('hero.emergency_call')}
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
                 className="border-medical-blue text-medical-blue hover:bg-medical-blue hover:text-white text-lg px-8 py-4"
               >
-                Book Ambulance
+                {t('hero.book_ambulance')}
               </Button>
             </div>
           </div>
@@ -71,8 +73,8 @@ const HeroSection = () => {
                     <Shield className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Licensed & Insured</p>
-                    <p className="text-sm text-gray-600">Professional Service</p>
+                    <p className="font-semibold text-gray-900">{t('hero.licensed')}</p>
+                    <p className="text-sm text-gray-600">{t('hero.professional')}</p>
                   </div>
                 </div>
               </div>

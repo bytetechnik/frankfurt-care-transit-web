@@ -1,35 +1,38 @@
 
-import { Ambulance, Car, Clock, MapPin, Heart, Users, Phone, Calendar } from 'lucide-react';
+import { Ambulance, Car, Clock, MapPin, Heart, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: Ambulance,
-      title: "Private Ambulance",
-      description: "Professional medical transport with trained paramedics",
+      title: t('services.ambulance.title'),
+      description: t('services.ambulance.description'),
       features: [
-        "Non-emergency patient transport",
-        "Medical supervision during transport",
-        "Local & long-distance coverage",
-        "Wheelchair accessible vehicles"
+        t('services.ambulance.feature1'),
+        t('services.ambulance.feature2'),
+        t('services.ambulance.feature3'),
+        t('services.ambulance.feature4')
       ],
       color: "medical-blue",
-      cta: "Request Ambulance"
+      cta: t('services.ambulance.cta')
     },
     {
       icon: Car,
-      title: "Taxi Service",
-      description: "Reliable taxi service for all your transportation needs",
+      title: t('services.taxi.title'),
+      description: t('services.taxi.description'),
       features: [
-        "Airport transfers",
-        "Senior citizen support",
-        "Local Frankfurt transport",
-        "Comfortable & clean vehicles"
+        t('services.taxi.feature1'),
+        t('services.taxi.feature2'),
+        t('services.taxi.feature3'),
+        t('services.taxi.feature4')
       ],
       color: "emergency-amber",
-      cta: "Book Taxi"
+      cta: t('services.taxi.cta')
     }
   ];
 
@@ -38,9 +41,9 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('services.title')}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Professional transportation services tailored to your medical and mobility needs in Frankfurt
+            {t('services.subtitle')}
           </p>
         </div>
 
@@ -83,28 +86,28 @@ const ServicesSection = () => {
 
         {/* Why Choose Us */}
         <div className="bg-white rounded-2xl p-8 shadow-lg animate-fade-in">
-          <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Why Choose MediTransport Frankfurt?</h3>
+          <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">{t('services.why_choose')}</h3>
           <div className="grid md:grid-cols-4 gap-6">
             {[
               {
                 icon: Clock,
-                title: "24/7 Availability",
-                description: "Round-the-clock service when you need us most"
+                title: t('services.availability'),
+                description: t('services.availability_desc')
               },
               {
                 icon: Heart,
-                title: "Medical Expertise",
-                description: "Trained professionals with medical knowledge"
+                title: t('services.expertise'),
+                description: t('services.expertise_desc')
               },
               {
                 icon: MapPin,
-                title: "Local Coverage",
-                description: "Serving Frankfurt and surrounding areas"
+                title: t('services.coverage'),
+                description: t('services.coverage_desc')
               },
               {
                 icon: Users,
-                title: "Patient-Centered Care",
-                description: "Comfort and safety are our top priorities"
+                title: t('services.care'),
+                description: t('services.care_desc')
               }
             ].map((item, index) => (
               <div key={index} className="text-center">

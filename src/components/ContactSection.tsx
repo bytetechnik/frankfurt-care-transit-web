@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const ContactSection = () => {
     message: ''
   });
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -26,7 +28,6 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
     toast({
       title: "Message Sent!",
       description: "Thank you for contacting us. We'll get back to you soon.",
@@ -37,23 +38,23 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Emergency Hotline",
+      title: t('contact.emergency_hotline'),
       info: "+49 69 123 456 789",
-      subinfo: "Available 24/7",
+      subinfo: t('contact.available_24_7'),
       href: "tel:+4969123456789",
       color: "emergency-amber"
     },
     {
       icon: Mail,
-      title: "Email Us",
+      title: t('contact.email_us'),
       info: "info@meditransport-frankfurt.de",
-      subinfo: "We'll respond within 2 hours",
+      subinfo: t('contact.respond_2h'),
       href: "mailto:info@meditransport-frankfurt.de",
       color: "medical-blue"
     },
     {
       icon: MapPin,
-      title: "Our Location",
+      title: t('contact.location'),
       info: "Hauptstraße 123, 60313 Frankfurt",
       subinfo: "Frankfurt am Main, Germany",
       href: "#",
@@ -61,9 +62,9 @@ const ContactSection = () => {
     },
     {
       icon: Clock,
-      title: "Office Hours",
-      info: "Mon-Fri: 8:00 - 18:00",
-      subinfo: "Emergency service: 24/7",
+      title: t('contact.office_hours'),
+      info: t('contact.office_hours_time'),
+      subinfo: t('contact.emergency_service'),
       href: "#",
       color: "medical-blue"
     }
@@ -74,16 +75,16 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('contact.title')}</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get in touch for emergency transport or to book our services. We're here to help 24/7.
+            {t('contact.subtitle')}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-6 animate-fade-in">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('contact.get_in_touch')}</h3>
             
             {contactInfo.map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
@@ -127,10 +128,10 @@ const ContactSection = () => {
             <div className="bg-emergency-amber-light border border-emergency-amber rounded-lg p-6 mt-8">
               <div className="flex items-center space-x-3 mb-2">
                 <Phone className="h-5 w-5 text-emergency-amber" />
-                <h4 className="font-semibold text-emergency-amber">Emergency Services</h4>
+                <h4 className="font-semibold text-emergency-amber">{t('contact.emergency_services')}</h4>
               </div>
               <p className="text-gray-700">
-                For immediate medical transport or emergency situations, call our 24/7 hotline directly.
+                {t('contact.emergency_notice')}
               </p>
             </div>
           </div>
@@ -139,14 +140,14 @@ const ContactSection = () => {
           <div className="animate-slide-in-right">
             <Card className="shadow-xl">
               <CardHeader>
-                <CardTitle className="text-2xl text-gray-900">Send us a Message</CardTitle>
+                <CardTitle className="text-2xl text-gray-900">{t('contact.send_message')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name *
+                        {t('contact.full_name')} *
                       </label>
                       <Input
                         id="name"
@@ -156,12 +157,12 @@ const ContactSection = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         className="w-full"
-                        placeholder="Your full name"
+                        placeholder={t('contact.full_name')}
                       />
                     </div>
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number
+                        {t('contact.phone_number')}
                       </label>
                       <Input
                         id="phone"
@@ -177,7 +178,7 @@ const ContactSection = () => {
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
+                      {t('contact.email_address')} *
                     </label>
                     <Input
                       id="email"
@@ -193,7 +194,7 @@ const ContactSection = () => {
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message *
+                      {t('contact.message')} *
                     </label>
                     <Textarea
                       id="message"
@@ -203,7 +204,7 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       rows={5}
                       className="w-full"
-                      placeholder="Please describe your transport needs or inquiry..."
+                      placeholder={t('contact.message_placeholder')}
                     />
                   </div>
                   
@@ -213,7 +214,7 @@ const ContactSection = () => {
                     size="lg"
                   >
                     <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {t('contact.send')}
                   </Button>
                 </form>
               </CardContent>
@@ -227,7 +228,7 @@ const ContactSection = () => {
             <div className="h-64 bg-gray-200 flex items-center justify-center">
               <div className="text-center">
                 <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Interactive map would be embedded here</p>
+                <p className="text-gray-600">{t('contact.map_placeholder')}</p>
                 <p className="text-sm text-gray-500">Hauptstraße 123, 60313 Frankfurt am Main</p>
               </div>
             </div>

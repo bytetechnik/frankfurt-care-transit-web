@@ -1,7 +1,10 @@
 
 import { Ambulance, Phone, Mail, MapPin, Facebook, Twitter, Instagram } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -14,12 +17,11 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold">MediTransport Frankfurt</h3>
-                <p className="text-gray-400 text-sm">Professional Transport Services</p>
+                <p className="text-gray-400 text-sm">{t('footer.professional_services')}</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Your trusted partner for private ambulance and taxi services in Frankfurt and surrounding areas. 
-              We provide professional, reliable, and compassionate transportation services 24/7.
+              {t('footer.company_desc')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -36,26 +38,26 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-lg mb-4">{t('footer.quick_links')}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-gray-300 hover:text-white transition-colors">
-                  Home
+                  {t('header.home')}
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Services
+                  {t('header.services')}
                 </a>
               </li>
               <li>
                 <a href="#about" className="text-gray-300 hover:text-white transition-colors">
-                  About Us
+                  {t('header.about')}
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact
+                  {t('header.contact')}
                 </a>
               </li>
             </ul>
@@ -63,7 +65,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Contact Info</h4>
+            <h4 className="font-semibold text-lg mb-4">{t('footer.contact_info')}</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-emergency-amber" />
@@ -93,14 +95,14 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 MediTransport Frankfurt. All rights reserved.
+              {t('footer.rights_reserved')}
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Datenschutzerklärung
+                {t('footer.privacy')}
               </a>
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Impressum
+                {t('footer.imprint')}
               </a>
             </div>
           </div>

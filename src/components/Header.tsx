@@ -1,10 +1,13 @@
 
 import { useState } from 'react';
-import { Menu, X, Phone, Ambulance, Car } from 'lucide-react';
+import { Menu, X, Phone, Ambulance } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,27 +31,28 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <a href="#home" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              Home
+              {t('header.home')}
             </a>
             <a href="#services" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              Services
+              {t('header.services')}
             </a>
             <a href="#about" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              About Us
+              {t('header.about')}
             </a>
             <a href="#contact" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              Contact
+              {t('header.contact')}
             </a>
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-3">
-            <a href="tel:+4969123456789" className="flex items-center space-x-2 text-emergency-amber hover:text-emergency-amber-dark transition-colors">
+          {/* Desktop CTA and Language Switcher */}
+          <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
+            <a href={`tel:+49${t('header.phone').replace(/\s/g, '')}`} className="flex items-center space-x-2 text-emergency-amber hover:text-emergency-amber-dark transition-colors">
               <Phone className="h-4 w-4" />
-              <span className="font-semibold">069 123 456 789</span>
+              <span className="font-semibold">{t('header.phone')}</span>
             </a>
             <Button className="bg-emergency-amber hover:bg-emergency-amber-dark text-white">
-              Emergency Call
+              {t('header.emergency')}
             </Button>
           </div>
 
@@ -67,24 +71,25 @@ const Header = () => {
           <div className="md:hidden border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-4">
               <a href="#home" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                Home
+                {t('header.home')}
               </a>
               <a href="#services" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                Services
+                {t('header.services')}
               </a>
               <a href="#about" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                About Us
+                {t('header.about')}
               </a>
               <a href="#contact" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                Contact
+                {t('header.contact')}
               </a>
               <div className="pt-4 border-t border-gray-200">
-                <a href="tel:+4969123456789" className="flex items-center space-x-2 text-emergency-amber mb-3">
+                <LanguageSwitcher />
+                <a href={`tel:+49${t('header.phone').replace(/\s/g, '')}`} className="flex items-center space-x-2 text-emergency-amber mb-3 mt-3">
                   <Phone className="h-4 w-4" />
-                  <span className="font-semibold">069 123 456 789</span>
+                  <span className="font-semibold">{t('header.phone')}</span>
                 </a>
                 <Button className="w-full bg-emergency-amber hover:bg-emergency-amber-dark text-white">
-                  Emergency Call
+                  {t('header.emergency')}
                 </Button>
               </div>
             </nav>
