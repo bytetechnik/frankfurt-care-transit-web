@@ -2,9 +2,48 @@
 import { Phone, Clock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const [api, setApi] = useState<any>();
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [api]);
+
+  const heroImages = [
+    {
+      src: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      alt: "Professional ambulance service in Frankfurt"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      alt: "Medical transport vehicle"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      alt: "Emergency medical services"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      alt: "Professional taxi service"
+    }
+  ];
 
   return (
     <section id="home" className="relative bg-gradient-to-r from-medical-blue-light to-white py-20 overflow-hidden">
@@ -59,14 +98,36 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Hero Image */}
+          {/* Hero Image Slider */}
           <div className="animate-slide-in-right">
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1587826080692-f439cd0b70da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Professional ambulance service in Frankfurt"
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
+              <Carousel 
+                setApi={setApi}
+                className="w-full"
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+              >
+                <CarouselContent>
+                  {heroImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative">
+                        <img 
+                          src={image.src}
+                          alt={image.alt}
+                          className="rounded-2xl shadow-2xl w-full h-[400px] lg:h-[500px] object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
+              </Carousel>
+              
+              {/* Floating Info Card */}
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="bg-green-100 p-2 rounded-full">
