@@ -50,5 +50,24 @@ export function NavBarDemo() {
     }
   ]
 
-  return <NavBar items={navItems} />
+  return (
+    <>
+      {/* Logo Header */}
+      <div className="fixed top-4 left-4 z-50">
+        <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
+          <img 
+            src="/lovable-uploads/95c6b3c6-7b8d-4f23-b584-8d0e5f4a6c8b.png" 
+            alt="Taxi OM Krankentransport Logo" 
+            className="h-8 w-8 object-contain"
+          />
+          <div className="hidden sm:block">
+            <h1 className="text-sm font-bold text-medical-blue">Taxi OM</h1>
+            <p className="text-xs text-gray-600">Krankentransport</p>
+          </div>
+        </div>
+      </div>
+      
+      <NavBar items={navItems} />
+    </>
+  )
 }

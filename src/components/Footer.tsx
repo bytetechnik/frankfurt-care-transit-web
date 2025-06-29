@@ -1,4 +1,5 @@
-import { Ambulance, Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+
+import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 
@@ -12,8 +13,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-medical-blue p-2 rounded-lg">
-                <Ambulance className="h-6 w-6 text-white" />
+              <div className="bg-white p-2 rounded-lg">
+                <img 
+                  src="/lovable-uploads/95c6b3c6-7b8d-4f23-b584-8d0e5f4a6c8b.png" 
+                  alt="Taxi OM Krankentransport Logo" 
+                  className="h-6 w-6 object-contain"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold">Taxi OM Krankentransport</h3>
