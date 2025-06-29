@@ -110,15 +110,28 @@ const translations = {
         text: 'Die Dialysefahrten sind immer zuverlässig und pünktlich. Ich kann mich voll und ganz darauf verlassen.',
       },
     },
+    // Header navigation
+    header: {
+      home: 'Startseite',
+      services: 'Dienstleistungen',
+      about: 'Über uns',
+      contact: 'Kontakt'
+    },
     // Footer Section
     footer: {
       company_name: 'Taxi OM Krankentransport',
+      professional_services: 'Professionelle Dienstleistungen',
+      company_desc: 'Wir bieten zuverlässige und professionelle Krankentransport- und Taxi-Dienstleistungen in Frankfurt und Umgebung. Unser erfahrenes Team steht Ihnen rund um die Uhr zur Verfügung.',
+      quick_links: 'Schnellzugriff',
+      contact_info: 'Kontaktinformationen',
       address: 'Hauptstraße 123, 60313 Frankfurt am Main',
-      contact_info: 'info@taxi-om-krankentransport.de',
       phone: '+49 69 123 456 789',
       opening_hours: 'Mo-Fr: 8:00-18:00',
       emergency_service: '24/7 Notdienst',
       all_rights_reserved: 'Alle Rechte vorbehalten',
+      rights_reserved: '© 2024 MediTransport Frankfurt. Alle Rechte vorbehalten.',
+      privacy: 'Datenschutz',
+      imprint: 'Impressum'
     },
     // Contact Section
     contact: {
@@ -278,15 +291,28 @@ const translations = {
         text: 'The dialysis trips are always reliable and punctual. I can fully rely on it.',
       },
     },
+    // Header navigation
+    header: {
+      home: 'Home',
+      services: 'Services',
+      about: 'About',
+      contact: 'Contact'
+    },
     // Footer Section
     footer: {
       company_name: 'Taxi OM Krankentransport',
+      professional_services: 'Professional Services',
+      company_desc: 'We provide reliable and professional medical transport and taxi services in Frankfurt and surrounding areas. Our experienced team is available around the clock.',
+      quick_links: 'Quick Links',
+      contact_info: 'Contact Information',
       address: 'Hauptstraße 123, 60313 Frankfurt am Main',
-      contact_info: 'info@taxi-om-krankentransport.de',
       phone: '+49 69 123 456 789',
       opening_hours: 'Mon-Fri: 8:00-18:00',
       emergency_service: '24/7 Emergency Service',
       all_rights_reserved: 'All rights reserved',
+      rights_reserved: '© 2024 MediTransport Frankfurt. All rights reserved.',
+      privacy: 'Privacy Policy',
+      imprint: 'Imprint'
     },
     // Contact Section
     contact: {
