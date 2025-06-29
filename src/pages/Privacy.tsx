@@ -64,7 +64,7 @@ const Privacy = () => {
               <h3 className="text-xl font-semibold text-gray-800 mb-3 mt-6">{t('privacy.responsible_body')}</h3>
               <div className="text-gray-700 leading-relaxed">
                 <p className="font-medium">Taxi OM Ambulance</p>
-                <p>Lange Str. 37</p>
+                <p>Langstraße 37</p>
                 <p>63486 Bruchköbel</p>
                 <p className="mt-4">
                   <strong>{t('privacy.telephone')}:</strong> +49 17 84 26 87 86

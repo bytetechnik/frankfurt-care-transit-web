@@ -93,7 +93,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-emergency-amber mt-1" />
                 <span className="text-gray-300">
-                  Lange Str. 37<br />
+                  Langstraße 37<br />
                   63486 Bruchköbel<br />
                   Germany
                 </span>

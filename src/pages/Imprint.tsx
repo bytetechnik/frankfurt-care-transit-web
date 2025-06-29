@@ -19,7 +19,7 @@ const Imprint = () => {
               <h2 className="text-xl font-semibold text-gray-800 mb-4">{t('imprint.company_info')}</h2>
               <div className="text-gray-700 leading-relaxed">
                 <p className="font-medium">Taxi OM Ambulance</p>
-                <p>Lange Str. 37</p>
+                <p>Langstraße 37</p>
                 <p>63486 Bruchköbel</p>
                 <p className="mt-4">
                   <strong>{t('imprint.telephone')}:</strong> +49 17 84 26 87 86

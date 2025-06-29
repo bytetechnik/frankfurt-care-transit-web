@@ -1,3 +1,4 @@
+
 export const enTranslations = {
   // Header
   nav: {
@@ -113,7 +114,7 @@ export const enTranslations = {
     company_desc: 'We provide reliable and professional medical transport and taxi services in Bruchköbel and surrounding areas. Our experienced team is available around the clock.',
     quick_links: 'Quick Links',
     contact_info: 'Contact Information',
-    address: 'Lange Str. 37, 63486 Bruchköbel',
+    address: 'Langstraße 37, 63486 Bruchköbel',
     phone: '+49 17 84 26 87 86',
     opening_hours: 'Mon-Fri: 8:00-18:00',
     emergency_service: '24/7 Emergency Service',

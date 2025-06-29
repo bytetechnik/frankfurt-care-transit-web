@@ -26,8 +26,8 @@ const ContactInfo = () => {
     {
       icon: MapPin,
       title: t('contact.location'),
-      info: "Hauptstraße 123, 60313 Frankfurt",
-      subinfo: "Frankfurt am Main, Germany",
+      info: "Langstraße 37, 63486 Bruchköbel",
+      subinfo: "Bruchköbel, Germany",
       href: "#",
       color: "medical-blue"
     },

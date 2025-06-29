@@ -113,7 +113,7 @@ export const deTranslations = {
     company_desc: 'Wir bieten zuverlässige und professionelle Krankentransport- und Taxi-Dienstleistungen in Bruchköbel und Umgebung. Unser erfahrenes Team steht Ihnen rund um die Uhr zur Verfügung.',
     quick_links: 'Schnellzugriff',
     contact_info: 'Kontaktinformationen',
-    address: 'Lange Str. 37, 63486 Bruchköbel',
+    address: 'Langstraße 37, 63486 Bruchköbel',
     phone: '+49 17 84 26 87 86',
     opening_hours: 'Mo-Fr: 8:00-18:00',
     emergency_service: '24/7 Notdienst',
