@@ -23,7 +23,7 @@ const Header = () => {
               <Ambulance className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-medical-blue">MediTransport</h1>
+              <h1 className="text-2xl font-bold text-medical-blue">Taxi OM Krankentransport</h1>
               <p className="text-sm text-gray-600">Frankfurt</p>
             </div>
           </div>
@@ -31,28 +31,28 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <a href="#home" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              {t('header.home')}
+              {t('nav.home')}
             </a>
             <a href="#services" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              {t('header.services')}
+              {t('nav.services')}
             </a>
             <a href="#about" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              {t('header.about')}
+              {t('nav.about')}
             </a>
             <a href="#contact" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-              {t('header.contact')}
+              {t('nav.contact')}
             </a>
           </nav>
 
           {/* Desktop CTA and Language Switcher */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
-            <a href={`tel:+49${t('header.phone').replace(/\s/g, '')}`} className="flex items-center space-x-2 text-emergency-amber hover:text-emergency-amber-dark transition-colors">
+            <a href="tel:+4969123456789" className="flex items-center space-x-2 text-emergency-amber hover:text-emergency-amber-dark transition-colors">
               <Phone className="h-4 w-4" />
-              <span className="font-semibold">{t('header.phone')}</span>
+              <span className="font-semibold">{t('footer.phone')}</span>
             </a>
             <Button className="bg-emergency-amber hover:bg-emergency-amber-dark text-white">
-              {t('header.emergency')}
+              {t('hero.emergency_call')}
             </Button>
           </div>
 
@@ -71,25 +71,25 @@ const Header = () => {
           <div className="md:hidden border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-4">
               <a href="#home" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                {t('header.home')}
+                {t('nav.home')}
               </a>
               <a href="#services" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                {t('header.services')}
+                {t('nav.services')}
               </a>
               <a href="#about" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                {t('header.about')}
+                {t('nav.about')}
               </a>
               <a href="#contact" className="text-gray-700 hover:text-medical-blue transition-colors font-medium">
-                {t('header.contact')}
+                {t('nav.contact')}
               </a>
               <div className="pt-4 border-t border-gray-200">
                 <LanguageSwitcher />
-                <a href={`tel:+49${t('header.phone').replace(/\s/g, '')}`} className="flex items-center space-x-2 text-emergency-amber mb-3 mt-3">
+                <a href="tel:+4969123456789" className="flex items-center space-x-2 text-emergency-amber mb-3 mt-3">
                   <Phone className="h-4 w-4" />
-                  <span className="font-semibold">{t('header.phone')}</span>
+                  <span className="font-semibold">{t('footer.phone')}</span>
                 </a>
                 <Button className="w-full bg-emergency-amber hover:bg-emergency-amber-dark text-white">
-                  {t('header.emergency')}
+                  {t('hero.emergency_call')}
                 </Button>
               </div>
             </nav>
