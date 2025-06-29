@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -9,10 +8,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { sendBookingEmail } from '@/services/emailService';
 
 const AmbulanceBookingForm = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -55,27 +56,64 @@ const AmbulanceBookingForm = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Ambulance Booking Submitted!",
-      description: "Thank you for your booking request. We'll contact you shortly to confirm the details.",
-    });
-    setFormData({
-      firstName: '',
-      lastName: '',
-      address: '',
-      phone: '',
-      email: '',
-      locationFrom: '',
-      locationTo: '',
-      guests: '1',
-      healthInsurance: '',
-      customInsurance: '',
-      amenities: '',
-      additionalInfo: ''
-    });
-    setShowCustomInsurance(false);
+    setIsSubmitting(true);
+
+    try {
+      const emailData = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        pickupLocation: formData.locationFrom,
+        destination: formData.locationTo,
+        date: '',
+        time: '',
+        passengers: formData.guests,
+        serviceType: 'ambulance' as const,
+        medicalCondition: `Krankenkasse: ${formData.healthInsurance === 'other' ? formData.customInsurance : formData.healthInsurance}`,
+        specialRequirements: `Transport-Art: ${formData.amenities}, Zusätzliche Informationen: ${formData.additionalInfo}`
+      };
+
+      const success = await sendBookingEmail(emailData);
+
+      if (success) {
+        toast({
+          title: "Krankentransport-Buchung erfolgreich gesendet!",
+          description: "Vielen Dank für Ihre Buchungsanfrage. Wir werden uns in Kürze bei Ihnen melden, um die Details zu bestätigen.",
+        });
+        setFormData({
+          firstName: '',
+          lastName: '',
+          address: '',
+          phone: '',
+          email: '',
+          locationFrom: '',
+          locationTo: '',
+          guests: '1',
+          healthInsurance: '',
+          customInsurance: '',
+          amenities: '',
+          additionalInfo: ''
+        });
+        setShowCustomInsurance(false);
+      } else {
+        toast({
+          title: "Fehler beim Senden",
+          description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error('Email sending error:', error);
+      toast({
+        title: "Fehler beim Senden",
+        description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -253,9 +291,14 @@ const AmbulanceBookingForm = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full bg-medical-blue hover:bg-medical-blue-dark text-white py-3" size="lg">
+          <Button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="w-full bg-medical-blue hover:bg-medical-blue-dark text-white py-3" 
+            size="lg"
+          >
             <Send className="mr-2 h-5 w-5" />
-            {t('contact.send')}
+            {isSubmitting ? 'Wird gesendet...' : t('contact.send')}
           </Button>
         </form>
       </CardContent>

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,10 +7,12 @@ import { Label } from '@/components/ui/label';
 import { Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { sendBookingEmail } from '@/services/emailService';
 
 const TaxiBookingForm = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -32,23 +33,58 @@ const TaxiBookingForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Taxi Booking Submitted!",
-      description: "Thank you for your booking request. We'll contact you shortly.",
-    });
-    setFormData({
-      firstName: '',
-      lastName: '',
-      address: '',
-      phone: '',
-      email: '',
-      locationFrom: '',
-      locationTo: '',
-      time: '',
-      additionalInfo: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      const emailData = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        pickupLocation: formData.locationFrom,
+        destination: formData.locationTo,
+        date: formData.time ? new Date(formData.time).toLocaleDateString('de-DE') : '',
+        time: formData.time ? new Date(formData.time).toLocaleTimeString('de-DE') : '',
+        serviceType: 'taxi' as const,
+        specialRequirements: formData.additionalInfo
+      };
+
+      const success = await sendBookingEmail(emailData);
+
+      if (success) {
+        toast({
+          title: "Taxi-Buchung erfolgreich gesendet!",
+          description: "Vielen Dank für Ihre Buchungsanfrage. Wir werden uns in Kürze bei Ihnen melden.",
+        });
+        setFormData({
+          firstName: '',
+          lastName: '',
+          address: '',
+          phone: '',
+          email: '',
+          locationFrom: '',
+          locationTo: '',
+          time: '',
+          additionalInfo: ''
+        });
+      } else {
+        toast({
+          title: "Fehler beim Senden",
+          description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error('Email sending error:', error);
+      toast({
+        title: "Fehler beim Senden",
+        description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -172,9 +208,14 @@ const TaxiBookingForm = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full bg-emergency-amber hover:bg-emergency-amber-dark text-white py-3" size="lg">
+          <Button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="w-full bg-emergency-amber hover:bg-emergency-amber-dark text-white py-3" 
+            size="lg"
+          >
             <Send className="mr-2 h-5 w-5" />
-            {t('contact.send')}
+            {isSubmitting ? 'Wird gesendet...' : t('contact.send')}
           </Button>
         </form>
       </CardContent>
