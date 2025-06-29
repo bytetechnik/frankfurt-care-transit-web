@@ -1,6 +1,7 @@
 
 import { Ambulance, Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -108,9 +109,9 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
                 {t('footer.privacy')}
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link to="/imprint" className="text-gray-400 hover:text-white text-sm transition-colors">
                 {t('footer.imprint')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

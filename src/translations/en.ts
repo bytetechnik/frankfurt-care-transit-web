@@ -210,5 +210,20 @@ export const enTranslations = {
     advantage_2: 'Experienced Professional Staff',
     advantage_3: 'Modern Vehicle Fleet',
     advantage_4: 'Transparent Billing'
+  },
+  // Imprint Section
+  imprint: {
+    title: 'Imprint',
+    company_info: 'Company Information',
+    telephone: 'Telephone',
+    email: 'Email',
+    responsible_title: 'Responsible for the content',
+    dispute_resolution: 'Dispute Resolution',
+    dispute_text: 'The European Commission provides a platform for online dispute resolution (ODR):',
+    email_reference: 'You can find our email address above in the imprint.',
+    arbitration_disclaimer: 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.',
+    copyright: 'Copyright',
+    copyright_text1: 'The content and works on these pages created by the site operators are subject to German copyright law. Reproduction, processing, distribution, and any form of exploitation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are permitted only for private, non-commercial use.',
+    copyright_text2: 'To the extent that the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please notify us accordingly. Upon notification of any such violations, we will remove such content immediately.'
   }
 };

@@ -210,5 +210,20 @@ export const deTranslations = {
     advantage_2: 'Erfahrenes Fachpersonal',
     advantage_3: 'Moderne Fahrzeugflotte',
     advantage_4: 'Transparente Abrechnung'
+  },
+  // Imprint Section
+  imprint: {
+    title: 'Impressum',
+    company_info: 'Firmeninformationen',
+    telephone: 'Telefon',
+    email: 'E-Mail',
+    responsible_title: 'Verantwortlich für den Inhalt',
+    dispute_resolution: 'Streitschlichtung',
+    dispute_text: 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:',
+    email_reference: 'Unsere E-Mail-Adresse finden Sie oben im Impressum.',
+    arbitration_disclaimer: 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+    copyright: 'Urheberrecht',
+    copyright_text1: 'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.',
+    copyright_text2: 'Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.'
   }
 };

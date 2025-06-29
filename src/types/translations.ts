@@ -148,66 +148,18 @@ export interface Translations {
     advantage_3: string;
     advantage_4: string;
   };
-  contact: {
+  imprint: {
     title: string;
-    subtitle: string;
-    get_in_touch: string;
-    emergency_hotline: string;
-    email_us: string;
-    location: string;
-    office_hours: string;
-    office_hours_time: string;
-    available_24_7: string;
-    respond_2h: string;
-    emergency_service: string;
-    emergency_services: string;
-    emergency_notice: string;
-    send_message: string;
-    full_name: string;
-    phone_number: string;
-    email_address: string;
-    message: string;
-    message_placeholder: string;
-    send: string;
-    map_placeholder: string;
-    taxi_booking: string;
-    ambulance_booking: string;
-    common_fields: {
-      first_name: string;
-      last_name: string;
-      address: string;
-      phone: string;
-      email: string;
-      location_from: string;
-      location_to: string;
-    };
-    taxi_fields: {
-      time: string;
-      additional_info: string;
-    };
-    ambulance_fields: {
-      guests: string;
-      health_insurance: string;
-      amenities: string;
-      additional_info: string;
-      specify_insurance: string;
-      insurance_options: {
-        aok: string;
-        tk: string;
-        barmer: string;
-        dak: string;
-        kkh: string;
-        ik: string;
-        bkk: string;
-        knappschaft: string;
-        private: string;
-        other: string;
-      };
-      amenity_options: {
-        stretcher: string;
-        seated: string;
-        walking: string;
-      };
-    };
+    company_info: string;
+    telephone: string;
+    email: string;
+    responsible_title: string;
+    dispute_resolution: string;
+    dispute_text: string;
+    email_reference: string;
+    arbitration_disclaimer: string;
+    copyright: string;
+    copyright_text1: string;
+    copyright_text2: string;
   };
 }
