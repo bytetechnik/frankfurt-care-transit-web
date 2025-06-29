@@ -1,4 +1,3 @@
-
 export interface TranslationContextProps {
   language: SupportedLanguage;
   setLanguage: (language: SupportedLanguage) => void;
@@ -124,6 +123,22 @@ export interface Translations {
     rights_reserved: string;
     privacy: string;
     imprint: string;
+  };
+  about: {
+    title: string;
+    subtitle: string;
+    intro: string;
+    experience: string;
+    choice: string;
+    patient_transport: string;
+    billing: string;
+    coverage_title: string;
+    coverage_areas: string;
+    years_experience: string;
+    years_experience_text: string;
+    professional_service: string;
+    transparent_billing: string;
+    wide_coverage: string;
   };
   contact: {
     title: string;
