@@ -1,7 +1,7 @@
 
 export interface TranslationContextProps {
-  language: string;
-  setLanguage: (language: string) => void;
+  language: SupportedLanguage;
+  setLanguage: (language: SupportedLanguage) => void;
   t: (key: string) => string;
 }
 
