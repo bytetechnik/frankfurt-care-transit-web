@@ -166,6 +166,7 @@ export const deTranslations = {
       health_insurance: 'Krankenversicherung',
       amenities: 'Transportart',
       additional_info: 'Zusätzliche Informationen',
+      specify_insurance: 'Bitte geben Sie Ihre Versicherungsart an',
       insurance_options: {
         aok: 'AOK',
         tk: 'Techniker Krankenkasse',

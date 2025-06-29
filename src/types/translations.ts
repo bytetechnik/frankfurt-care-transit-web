@@ -167,6 +167,7 @@ export interface Translations {
       health_insurance: string;
       amenities: string;
       additional_info: string;
+      specify_insurance: string;
       insurance_options: {
         aok: string;
         tk: string;

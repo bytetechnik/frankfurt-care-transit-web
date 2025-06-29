@@ -229,14 +229,14 @@ const AmbulanceBookingForm = () => {
 
           {showCustomInsurance && (
             <div>
-              <Label htmlFor="customInsurance">Please specify your insurance type *</Label>
+              <Label htmlFor="customInsurance">{t('contact.ambulance_fields.specify_insurance')} *</Label>
               <Input
                 id="customInsurance"
                 name="customInsurance"
                 required
                 value={formData.customInsurance}
                 onChange={handleInputChange}
-                placeholder="Please specify your insurance type"
+                placeholder={t('contact.ambulance_fields.specify_insurance')}
               />
             </div>
           )}

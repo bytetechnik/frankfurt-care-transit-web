@@ -166,6 +166,7 @@ export const enTranslations = {
       health_insurance: 'Health Insurance',
       amenities: 'Transportation Type',
       additional_info: 'Additional Information',
+      specify_insurance: 'Please specify your insurance type',
       insurance_options: {
         aok: 'AOK',
         tk: 'Techniker Krankenkasse',
