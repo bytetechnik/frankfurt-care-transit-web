@@ -4,7 +4,7 @@
 
 export const EMAIL_CONFIG = {
   // EmailJS Service ID (get from EmailJS dashboard)
-  SERVICE_ID: 'your_service_id',
+  SERVICE_ID: 'service_i5zih1p',
   
   // EmailJS Template ID (create a template in EmailJS)
   TEMPLATE_ID: 'your_template_id',
