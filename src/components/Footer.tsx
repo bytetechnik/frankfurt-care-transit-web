@@ -20,7 +20,7 @@ const Footer = () => {
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold">OM Krankenwagen und Taxi</h3>
+                <h3 className="text-xl font-bold">OM Krankentransport und Taxi</h3>
                 <p className="text-gray-400 text-sm">{t('footer.professional_services')}</p>
               </div>
             </div>
