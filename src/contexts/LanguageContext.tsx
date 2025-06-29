@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface LanguageContextProps {
@@ -42,6 +41,33 @@ const translations = {
     services: {
       title: 'Unsere Dienstleistungen',
       subtitle: 'Wir bieten eine breite Palette an Transportdienstleistungen, um Ihren Bedürfnissen gerecht zu werden.',
+      ambulance: {
+        title: 'Krankentransport',
+        description: 'Sicherer und komfortabler Transport für Patienten zu medizinischen Terminen und Einrichtungen.',
+        feature1: 'Professionelle medizinische Betreuung',
+        feature2: 'Moderne Fahrzeuge mit medizinischer Ausstattung',
+        feature3: '24/7 Verfügbarkeit',
+        feature4: 'Erfahrenes Fachpersonal',
+        cta: 'Krankentransport buchen'
+      },
+      taxi: {
+        title: 'Taxi Service',
+        description: 'Zuverlässiger und komfortabler Taxi-Service für alle Ihre Transportbedürfnisse.',
+        feature1: 'Pünktliche Abholung',
+        feature2: 'Saubere und komfortable Fahrzeuge',
+        feature3: 'Faire Preise',
+        feature4: 'Freundliche Fahrer',
+        cta: 'Taxi buchen'
+      },
+      why_choose: 'Warum uns wählen?',
+      availability: '24/7 Verfügbarkeit',
+      availability_desc: 'Rund um die Uhr für Sie da',
+      expertise: 'Fachkompetenz',
+      expertise_desc: 'Geschultes medizinisches Personal',
+      coverage: 'Abdeckung',
+      coverage_desc: 'Frankfurt und Umgebung',
+      care: 'Betreuung',
+      care_desc: 'Einfühlsame Patientenbetreuung',
       service1: {
         title: 'Krankentransport',
         description: 'Sicherer und komfortabler Transport für Patienten zu medizinischen Terminen und Einrichtungen.',
@@ -183,6 +209,33 @@ const translations = {
     services: {
       title: 'Our Services',
       subtitle: 'We offer a wide range of transport services to meet your needs.',
+      ambulance: {
+        title: 'Medical Transport',
+        description: 'Safe and comfortable transport for patients to medical appointments and facilities.',
+        feature1: 'Professional medical care',
+        feature2: 'Modern vehicles with medical equipment',
+        feature3: '24/7 availability',
+        feature4: 'Experienced medical staff',
+        cta: 'Book Medical Transport'
+      },
+      taxi: {
+        title: 'Taxi Service',
+        description: 'Reliable and comfortable taxi service for all your transport needs.',
+        feature1: 'Punctual pickup',
+        feature2: 'Clean and comfortable vehicles',
+        feature3: 'Fair prices',
+        feature4: 'Friendly drivers',
+        cta: 'Book Taxi'
+      },
+      why_choose: 'Why Choose Us?',
+      availability: '24/7 Availability',
+      availability_desc: 'Around the clock service',
+      expertise: 'Expertise',
+      expertise_desc: 'Trained medical personnel',
+      coverage: 'Coverage',
+      coverage_desc: 'Frankfurt and surrounding areas',
+      care: 'Care',
+      care_desc: 'Compassionate patient care',
       service1: {
         title: 'Medical Transport',
         description: 'Safe and comfortable transport for patients to medical appointments and facilities.',
