@@ -1,120 +1,24 @@
-import { useState } from 'react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { sendBookingEmail } from '@/services/emailService';
+import { useAmbulanceBookingForm } from '@/hooks/useAmbulanceBookingForm';
+import PersonalInfoSection from '@/components/ambulance/PersonalInfoSection';
+import TransportDetailsSection from '@/components/ambulance/TransportDetailsSection';
+import InsuranceSection from '@/components/ambulance/InsuranceSection';
 
 const AmbulanceBookingForm = () => {
-  const { t } = useLanguage();
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    phone: '',
-    email: '',
-    locationFrom: '',
-    locationTo: '',
-    guests: '1',
-    healthInsurance: '',
-    customInsurance: '',
-    amenities: '',
-    additionalInfo: ''
-  });
-
-  const [showCustomInsurance, setShowCustomInsurance] = useState(false);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSelectChange = (name: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-
-    if (name === 'healthInsurance') {
-      setShowCustomInsurance(value === 'other');
-      if (value !== 'other') {
-        setFormData(prev => ({
-          ...prev,
-          customInsurance: ''
-        }));
-      }
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const emailData = {
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
-        phone: formData.phone,
-        pickupLocation: formData.locationFrom,
-        destination: formData.locationTo,
-        date: '',
-        time: '',
-        passengers: formData.guests,
-        serviceType: 'ambulance' as const,
-        medicalCondition: `Krankenkasse: ${formData.healthInsurance === 'other' ? formData.customInsurance : formData.healthInsurance}`,
-        specialRequirements: `Transport-Art: ${formData.amenities}, Zusätzliche Informationen: ${formData.additionalInfo}`
-      };
-
-      const success = await sendBookingEmail(emailData);
-
-      if (success) {
-        toast({
-          title: "Krankentransport-Buchung erfolgreich gesendet!",
-          description: "Vielen Dank für Ihre Buchungsanfrage. Wir werden uns in Kürze bei Ihnen melden, um die Details zu bestätigen.",
-        });
-        setFormData({
-          firstName: '',
-          lastName: '',
-          address: '',
-          phone: '',
-          email: '',
-          locationFrom: '',
-          locationTo: '',
-          guests: '1',
-          healthInsurance: '',
-          customInsurance: '',
-          amenities: '',
-          additionalInfo: ''
-        });
-        setShowCustomInsurance(false);
-      } else {
-        toast({
-          title: "Fehler beim Senden",
-          description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
-          variant: "destructive"
-        });
-      }
-    } catch (error) {
-      console.error('Email sending error:', error);
-      toast({
-        title: "Fehler beim Senden",
-        description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const {
+    formData,
+    showCustomInsurance,
+    isSubmitting,
+    handleInputChange,
+    handleSelectChange,
+    handleSubmit,
+    t
+  } = useAmbulanceBookingForm();
 
   return (
     <Card className="shadow-xl">
@@ -126,158 +30,26 @@ const AmbulanceBookingForm = () => {
       </CardHeader>
       <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="firstName">{t('contact.common_fields.first_name')} *</Label>
-              <Input
-                id="firstName"
-                name="firstName"
-                required
-                value={formData.firstName}
-                onChange={handleInputChange}
-                placeholder={t('contact.common_fields.first_name')}
-              />
-            </div>
-            <div>
-              <Label htmlFor="lastName">{t('contact.common_fields.last_name')} *</Label>
-              <Input
-                id="lastName"
-                name="lastName"
-                required
-                value={formData.lastName}
-                onChange={handleInputChange}
-                placeholder={t('contact.common_fields.last_name')}
-              />
-            </div>
-          </div>
+          <PersonalInfoSection
+            formData={formData}
+            onInputChange={handleInputChange}
+            t={t}
+          />
 
-          <div>
-            <Label htmlFor="address">{t('contact.common_fields.address')} *</Label>
-            <Input
-              id="address"
-              name="address"
-              required
-              value={formData.address}
-              onChange={handleInputChange}
-              placeholder={t('contact.common_fields.address')}
-            />
-          </div>
+          <TransportDetailsSection
+            formData={formData}
+            onInputChange={handleInputChange}
+            onSelectChange={handleSelectChange}
+            t={t}
+          />
 
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="phone">{t('contact.common_fields.phone')} *</Label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
-                placeholder="+49 69 ..."
-              />
-            </div>
-            <div>
-              <Label htmlFor="email">{t('contact.common_fields.email')}</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="your.email@example.com"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="locationFrom">{t('contact.common_fields.location_from')} *</Label>
-              <Input
-                id="locationFrom"
-                name="locationFrom"
-                required
-                value={formData.locationFrom}
-                onChange={handleInputChange}
-                placeholder={t('contact.common_fields.location_from')}
-              />
-            </div>
-            <div>
-              <Label htmlFor="locationTo">{t('contact.common_fields.location_to')} *</Label>
-              <Input
-                id="locationTo"
-                name="locationTo"
-                required
-                value={formData.locationTo}
-                onChange={handleInputChange}
-                placeholder={t('contact.common_fields.location_to')}
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="guests">{t('contact.ambulance_fields.guests')} *</Label>
-              <Select value={formData.guests} onValueChange={(value) => handleSelectChange('guests', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select number of passengers" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">1</SelectItem>
-                  <SelectItem value="2">2</SelectItem>
-                  <SelectItem value="3">3</SelectItem>
-                  <SelectItem value="4">4</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label htmlFor="amenities">{t('contact.ambulance_fields.amenities')} *</Label>
-              <Select value={formData.amenities} onValueChange={(value) => handleSelectChange('amenities', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select transport type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="stretcher">{t('contact.ambulance_fields.amenity_options.stretcher')}</SelectItem>
-                  <SelectItem value="seated">{t('contact.ambulance_fields.amenity_options.seated')}</SelectItem>
-                  <SelectItem value="walking">{t('contact.ambulance_fields.amenity_options.walking')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          <div>
-            <Label htmlFor="healthInsurance">{t('contact.ambulance_fields.health_insurance')} *</Label>
-            <Select value={formData.healthInsurance} onValueChange={(value) => handleSelectChange('healthInsurance', value)}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select health insurance type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="aok">{t('contact.ambulance_fields.insurance_options.aok')}</SelectItem>
-                <SelectItem value="tk">{t('contact.ambulance_fields.insurance_options.tk')}</SelectItem>
-                <SelectItem value="barmer">{t('contact.ambulance_fields.insurance_options.barmer')}</SelectItem>
-                <SelectItem value="dak">{t('contact.ambulance_fields.insurance_options.dak')}</SelectItem>
-                <SelectItem value="kkh">{t('contact.ambulance_fields.insurance_options.kkh')}</SelectItem>
-                <SelectItem value="ik">{t('contact.ambulance_fields.insurance_options.ik')}</SelectItem>
-                <SelectItem value="bkk">{t('contact.ambulance_fields.insurance_options.bkk')}</SelectItem>
-                <SelectItem value="knappschaft">{t('contact.ambulance_fields.insurance_options.knappschaft')}</SelectItem>
-                <SelectItem value="private">{t('contact.ambulance_fields.insurance_options.private')}</SelectItem>
-                <SelectItem value="other">{t('contact.ambulance_fields.insurance_options.other')}</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {showCustomInsurance && (
-            <div>
-              <Label htmlFor="customInsurance">{t('contact.ambulance_fields.specify_insurance')} *</Label>
-              <Input
-                id="customInsurance"
-                name="customInsurance"
-                required
-                value={formData.customInsurance}
-                onChange={handleInputChange}
-                placeholder={t('contact.ambulance_fields.specify_insurance')}
-              />
-            </div>
-          )}
+          <InsuranceSection
+            formData={formData}
+            showCustomInsurance={showCustomInsurance}
+            onInputChange={handleInputChange}
+            onSelectChange={handleSelectChange}
+            t={t}
+          />
 
           <div>
             <Label htmlFor="additionalInfo">{t('contact.ambulance_fields.additional_info')}</Label>
