@@ -7,10 +7,10 @@ export const EMAIL_CONFIG = {
   SERVICE_ID: 'service_i5zih1p',
   
   // EmailJS Template ID (create a template in EmailJS)
-  TEMPLATE_ID: 'your_template_id',
+  TEMPLATE_ID: 'template_gxbokvl',
   
   // EmailJS Public Key (get from EmailJS dashboard)
-  PUBLIC_KEY: 'your_public_key',
+  PUBLIC_KEY: 'DFtbL8GD5RHz0ZzvU',
   
   // Recipient email address
   RECIPIENT_EMAIL: 'rafayet.cse@gmail.com'
