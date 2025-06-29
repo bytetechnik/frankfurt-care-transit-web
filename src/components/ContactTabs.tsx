@@ -3,10 +3,9 @@ import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TaxiBookingForm from '@/components/TaxiBookingForm';
 import AmbulanceBookingForm from '@/components/AmbulanceBookingForm';
-import GeneralContactForm from '@/components/GeneralContactForm';
 
 const ContactTabs = () => {
-  const [activeTab, setActiveTab] = useState('general');
+  const [activeTab, setActiveTab] = useState('ambulance');
   const { t } = useLanguage();
 
   return (
@@ -14,14 +13,14 @@ const ContactTabs = () => {
       {/* Tab Navigation */}
       <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
         <button
-          onClick={() => setActiveTab('general')}
+          onClick={() => setActiveTab('ambulance')}
           className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-            activeTab === 'general'
+            activeTab === 'ambulance'
               ? 'bg-white text-gray-900 shadow-sm'
               : 'text-gray-600 hover:text-gray-900'
           }`}
         >
-          General Contact
+          🚑 {t('contact.ambulance_booking')}
         </button>
         <button
           onClick={() => setActiveTab('taxi')}
@@ -33,22 +32,11 @@ const ContactTabs = () => {
         >
           🚕 {t('contact.taxi_booking')}
         </button>
-        <button
-          onClick={() => setActiveTab('ambulance')}
-          className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-            activeTab === 'ambulance'
-              ? 'bg-white text-gray-900 shadow-sm'
-              : 'text-gray-600 hover:text-gray-900'
-          }`}
-        >
-          🚑 {t('contact.ambulance_booking')}
-        </button>
       </div>
 
       {/* Tab Content */}
-      {activeTab === 'general' && <GeneralContactForm />}
-      {activeTab === 'taxi' && <TaxiBookingForm />}
       {activeTab === 'ambulance' && <AmbulanceBookingForm />}
+      {activeTab === 'taxi' && <TaxiBookingForm />}
     </div>
   );
 };

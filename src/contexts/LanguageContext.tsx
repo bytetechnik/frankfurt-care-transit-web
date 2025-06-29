@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface LanguageContextProps {
@@ -15,9 +16,7 @@ const translations = {
       home: 'Startseite',
       services: 'Dienstleistungen',
       about: 'Über uns',
-      contact: 'Kontakt',
-      taxi_booking: 'Taxi Buchung',
-      ambulance_booking: 'Krankenwagen Buchung'
+      contact: 'Kontakt'
     },
     // Hero Section
     hero: {
@@ -158,9 +157,7 @@ const translations = {
       home: 'Home',
       services: 'Services',
       about: 'About',
-      contact: 'Contact',
-      taxi_booking: 'Taxi Booking',
-      ambulance_booking: 'Ambulance Booking'
+      contact: 'Contact'
     },
     // Hero Section
     hero: {
