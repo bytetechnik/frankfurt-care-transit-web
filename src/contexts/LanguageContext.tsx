@@ -1,198 +1,320 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-type Language = 'de' | 'en';
-
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
+interface LanguageContextProps {
+  language: string;
+  setLanguage: (language: string) => void;
   t: (key: string) => string;
 }
+
+const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 const translations = {
   de: {
     // Header
-    'header.home': 'Startseite',
-    'header.services': 'Dienstleistungen',
-    'header.about': 'Über uns',
-    'header.contact': 'Kontakt',
-    'header.emergency': 'Notruf',
-    'header.phone': '069 123 456 789',
-    
+    nav: {
+      home: 'Startseite',
+      services: 'Dienstleistungen',
+      about: 'Über uns',
+      contact: 'Kontakt',
+      taxi_booking: 'Taxi Buchung',
+      ambulance_booking: 'Krankenwagen Buchung'
+    },
     // Hero Section
-    'hero.title.private': 'Privater',
-    'hero.title.ambulance': 'Krankenwagen',
-    'hero.title.and': '&',
-    'hero.title.taxi': 'Taxi Service',
-    'hero.description': 'Professioneller medizinischer Transport und Taxiservice in Frankfurt und Umgebung. Rund um die Uhr verfügbar mit geschultem Personal und schnellen Reaktionszeiten.',
-    'hero.feature.24_7': '24/7 Verfügbar',
-    'hero.feature.certified': 'Zertifiziertes Personal',
-    'hero.feature.patient_care': 'Patientenbetreuung',
-    'hero.feature.fast_response': 'Schnelle Reaktion',
-    'hero.emergency_call': 'Notruf Jetzt',
-    'hero.book_ambulance': 'Krankenwagen Buchen',
-    'hero.licensed': 'Lizenziert & Versichert',
-    'hero.professional': 'Professioneller Service',
-    
+    hero: {
+      title: {
+        private: 'Taxi OM',
+        ambulance: 'Krankentransport',
+        and: '&',
+        taxi: 'Taxi Service'
+      },
+      description: 'Professioneller privater Krankentransport und Taxi-Service in Frankfurt. 24/7 verfügbar mit geschultem Personal und schneller Reaktionszeit.',
+      feature: {
+        '24_7': '24/7 Verfügbar',
+        certified: 'Zertifiziert',
+        patient_care: 'Patientenbetreuung',
+        fast_response: 'Schnelle Reaktion'
+      },
+      emergency_call: 'Notruf',
+      book_ambulance: 'Krankenwagen buchen',
+      licensed: 'Lizenziert',
+      professional: 'Professionell'
+    },
     // Services Section
-    'services.title': 'Unsere Dienstleistungen',
-    'services.subtitle': 'Professionelle Transportdienstleistungen zugeschnitten auf Ihre medizinischen und Mobilitätsbedürfnisse in Frankfurt',
-    'services.ambulance.title': 'Privater Krankenwagen',
-    'services.ambulance.description': 'Professioneller medizinischer Transport mit ausgebildeten Sanitätern',
-    'services.ambulance.feature1': 'Nicht-Notfall Patiententransport',
-    'services.ambulance.feature2': 'Medizinische Betreuung während Transport',
-    'services.ambulance.feature3': 'Lokal & Fernstrecken Abdeckung',
-    'services.ambulance.feature4': 'Rollstuhlgerechte Fahrzeuge',
-    'services.ambulance.cta': 'Krankenwagen Anfragen',
-    'services.taxi.title': 'Taxi Service',
-    'services.taxi.description': 'Zuverlässiger Taxiservice für alle Ihre Transportbedürfnisse',
-    'services.taxi.feature1': 'Flughafentransfers',
-    'services.taxi.feature2': 'Seniorenbetreuung',
-    'services.taxi.feature3': 'Lokaler Frankfurt Transport',
-    'services.taxi.feature4': 'Komfortable & saubere Fahrzeuge',
-    'services.taxi.cta': 'Taxi Buchen',
-    'services.why_choose': 'Warum MediTransport Frankfurt wählen?',
-    'services.availability': '24/7 Verfügbarkeit',
-    'services.availability_desc': 'Rund-um-die-Uhr Service wenn Sie uns am meisten brauchen',
-    'services.expertise': 'Medizinische Expertise',
-    'services.expertise_desc': 'Geschulte Fachkräfte mit medizinischem Wissen',
-    'services.coverage': 'Lokale Abdeckung',
-    'services.coverage_desc': 'Bedienung Frankfurt und Umgebung',
-    'services.care': 'Patientenzentrierte Betreuung',
-    'services.care_desc': 'Komfort und Sicherheit sind unsere obersten Prioritäten',
-    
-    // Testimonials
-    'testimonials.title': 'Was unsere Kunden sagen',
-    'testimonials.subtitle': 'Lesen Sie Erfahrungsberichte von zufriedenen Kunden, die uns mit ihren Transportbedürfnissen vertrauen',
-    
+    services: {
+      title: 'Unsere Dienstleistungen',
+      subtitle: 'Wir bieten eine breite Palette an Transportdienstleistungen, um Ihren Bedürfnissen gerecht zu werden.',
+      service1: {
+        title: 'Krankentransport',
+        description: 'Sicherer und komfortabler Transport für Patienten zu medizinischen Terminen und Einrichtungen.',
+      },
+      service2: {
+        title: 'Rollstuhltransport',
+        description: 'Barrierefreier Transport für Rollstuhlfahrer mit speziell ausgestatteten Fahrzeugen.',
+      },
+      service3: {
+        title: 'Dialysefahrten',
+        description: 'Regelmäßige und zuverlässige Fahrten für Dialysepatienten.',
+      },
+      service4: {
+        title: 'Flughafentransfer',
+        description: 'Pünktlicher und bequemer Transfer zum und vom Flughafen Frankfurt.',
+      },
+      service5: {
+        title: 'Kurierfahrten',
+        description: 'Schnelle und zuverlässige Lieferung von Dokumenten und Paketen.',
+      },
+      service6: {
+        title: 'Besorgungsfahrten',
+        description: 'Erledigung von Einkäufen und Besorgungen für Menschen mit eingeschränkter Mobilität.',
+      },
+    },
+    // Testimonials Section
+    testimonials: {
+      title: 'Was unsere Kunden sagen',
+      subtitle: 'Erfahrungen unserer Kunden mit unseren Transportdienstleistungen.',
+      testimonial1: {
+        name: 'Maria Schmidt',
+        text: 'Der Krankentransport war pünktlich und sehr angenehm. Das Personal war freundlich und hilfsbereit.',
+      },
+      testimonial2: {
+        name: 'Hans Müller',
+        text: 'Ich bin sehr zufrieden mit dem Rollstuhltransport. Das Fahrzeug war sauber und gut ausgestattet.',
+      },
+      testimonial3: {
+        name: 'Julia Weber',
+        text: 'Die Dialysefahrten sind immer zuverlässig und pünktlich. Ich kann mich voll und ganz darauf verlassen.',
+      },
+    },
+    // Footer Section
+    footer: {
+      company_name: 'Taxi OM Krankentransport',
+      address: 'Hauptstraße 123, 60313 Frankfurt am Main',
+      contact_info: 'info@taxi-om-krankentransport.de',
+      phone: '+49 69 123 456 789',
+      opening_hours: 'Mo-Fr: 8:00-18:00',
+      emergency_service: '24/7 Notdienst',
+      all_rights_reserved: 'Alle Rechte vorbehalten',
+    },
     // Contact Section
-    'contact.title': 'Kontaktieren Sie uns',
-    'contact.subtitle': 'Kontaktieren Sie uns für Notfalltransport oder um unsere Dienstleistungen zu buchen. Wir sind rund um die Uhr für Sie da.',
-    'contact.get_in_touch': 'Kontakt aufnehmen',
-    'contact.emergency_hotline': 'Notfall-Hotline',
-    'contact.available_24_7': 'Verfügbar 24/7',
-    'contact.email_us': 'E-Mail an uns',
-    'contact.respond_2h': 'Wir antworten innerhalb von 2 Stunden',
-    'contact.location': 'Unser Standort',
-    'contact.office_hours': 'Bürozeiten',
-    'contact.office_hours_time': 'Mo-Fr: 8:00 - 18:00',
-    'contact.emergency_service': 'Notfalldienst: 24/7',
-    'contact.emergency_services': 'Notfalldienste',
-    'contact.emergency_notice': 'Für sofortigen medizinischen Transport oder Notfallsituationen rufen Sie direkt unsere 24/7-Hotline an.',
-    'contact.send_message': 'Senden Sie uns eine Nachricht',
-    'contact.full_name': 'Vollständiger Name',
-    'contact.phone_number': 'Telefonnummer',
-    'contact.email_address': 'E-Mail-Adresse',
-    'contact.message': 'Nachricht',
-    'contact.message_placeholder': 'Bitte beschreiben Sie Ihre Transportbedürfnisse oder Anfrage...',
-    'contact.send': 'Nachricht senden',
-    'contact.map_placeholder': 'Interaktive Karte würde hier eingebettet werden',
-    
-    // Footer
-    'footer.company_desc': 'Ihr vertrauensvoller Partner für private Krankenwagen- und Taxiservices in Frankfurt und Umgebung. Wir bieten professionelle, zuverlässige und mitfühlende Transportdienstleistungen rund um die Uhr.',
-    'footer.quick_links': 'Schnelllinks',
-    'footer.contact_info': 'Kontakt Info',
-    'footer.professional_services': 'Professionelle Transportdienstleistungen',
-    'footer.rights_reserved': '© 2024 MediTransport Frankfurt. Alle Rechte vorbehalten.',
-    'footer.privacy': 'Datenschutzerklärung',
-    'footer.imprint': 'Impressum'
+    contact: {
+      title: 'Kontaktieren Sie uns',
+      subtitle: 'Benötigen Sie einen Krankentransport oder Taxi-Service? Wir sind hier, um zu helfen.',
+      get_in_touch: 'Kontakt aufnehmen',
+      emergency_hotline: 'Notfall-Hotline',
+      email_us: 'E-Mail senden',
+      location: 'Standort',
+      office_hours: 'Bürozeiten',
+      office_hours_time: 'Mo-Fr: 8:00-18:00',
+      available_24_7: '24/7 Verfügbar',
+      respond_2h: 'Antwort innerhalb von 2 Stunden',
+      emergency_service: 'Notfalldienst rund um die Uhr',
+      emergency_services: 'Notfalldienste',
+      emergency_notice: 'Für lebensbedrohliche Notfälle rufen Sie bitte 112 an. Unser Service ist für geplante Transporte und nicht-kritische medizinische Situationen.',
+      send_message: 'Nachricht senden',
+      full_name: 'Vollständiger Name',
+      phone_number: 'Telefonnummer',
+      email_address: 'E-Mail-Adresse',
+      message: 'Nachricht',
+      message_placeholder: 'Beschreiben Sie Ihre Transportanforderungen...',
+      send: 'Senden',
+      map_placeholder: 'Karte wird hier angezeigt',
+      taxi_booking: 'Taxi Buchung',
+      ambulance_booking: 'Krankenwagen Buchung',
+      common_fields: {
+        first_name: 'Vorname',
+        last_name: 'Nachname',
+        address: 'Adresse',
+        phone: 'Telefon',
+        email: 'E-Mail',
+        location_from: 'Abholort',
+        location_to: 'Zielort'
+      },
+      taxi_fields: {
+        time: 'Gewünschte Zeit',
+        additional_info: 'Zusätzliche Informationen'
+      },
+      ambulance_fields: {
+        guests: 'Anzahl Passagiere',
+        health_insurance: 'Krankenversicherung',
+        amenities: 'Transportart',
+        additional_info: 'Zusätzliche Informationen',
+        insurance_options: {
+          public: 'Gesetzliche Krankenversicherung',
+          private: 'Private Krankenversicherung',
+          self_pay: 'Selbstzahler',
+          other: 'Andere'
+        },
+        amenity_options: {
+          sitting: 'Sitzend',
+          laying: 'Liegend',
+          wheelchair: 'Rollstuhl'
+        }
+      }
+    }
   },
   en: {
     // Header
-    'header.home': 'Home',
-    'header.services': 'Services',
-    'header.about': 'About Us',
-    'header.contact': 'Contact',
-    'header.emergency': 'Emergency Call',
-    'header.phone': '069 123 456 789',
-    
+    nav: {
+      home: 'Home',
+      services: 'Services',
+      about: 'About',
+      contact: 'Contact',
+      taxi_booking: 'Taxi Booking',
+      ambulance_booking: 'Ambulance Booking'
+    },
     // Hero Section
-    'hero.title.private': 'Private',
-    'hero.title.ambulance': 'Ambulance',
-    'hero.title.and': '&',
-    'hero.title.taxi': 'Taxi Service',
-    'hero.description': 'Professional medical transport and taxi services in Frankfurt and surrounding areas. Available 24/7 with trained staff and fast response times.',
-    'hero.feature.24_7': '24/7 Available',
-    'hero.feature.certified': 'Certified Staff',
-    'hero.feature.patient_care': 'Patient Care',
-    'hero.feature.fast_response': 'Fast Response',
-    'hero.emergency_call': 'Emergency Call Now',
-    'hero.book_ambulance': 'Book Ambulance',
-    'hero.licensed': 'Licensed & Insured',
-    'hero.professional': 'Professional Service',
-    
+    hero: {
+      title: {
+        private: 'Taxi OM',
+        ambulance: 'Medical Transport',
+        and: '&',
+        taxi: 'Taxi Service'
+      },
+      description: 'Professional private medical transport and taxi service in Frankfurt. Available 24/7 with trained staff and fast response times.',
+      feature: {
+        '24_7': '24/7 Available',
+        certified: 'Certified',
+        patient_care: 'Patient Care',
+        fast_response: 'Fast Response'
+      },
+      emergency_call: 'Emergency Call',
+      book_ambulance: 'Book Ambulance',
+      licensed: 'Licensed',
+      professional: 'Professional'
+    },
     // Services Section
-    'services.title': 'Our Services',
-    'services.subtitle': 'Professional transportation services tailored to your medical and mobility needs in Frankfurt',
-    'services.ambulance.title': 'Private Ambulance',
-    'services.ambulance.description': 'Professional medical transport with trained paramedics',
-    'services.ambulance.feature1': 'Non-emergency patient transport',
-    'services.ambulance.feature2': 'Medical supervision during transport',
-    'services.ambulance.feature3': 'Local & long-distance coverage',
-    'services.ambulance.feature4': 'Wheelchair accessible vehicles',
-    'services.ambulance.cta': 'Request Ambulance',
-    'services.taxi.title': 'Taxi Service',
-    'services.taxi.description': 'Reliable taxi service for all your transportation needs',
-    'services.taxi.feature1': 'Airport transfers',
-    'services.taxi.feature2': 'Senior citizen support',
-    'services.taxi.feature3': 'Local Frankfurt transport',
-    'services.taxi.feature4': 'Comfortable & clean vehicles',
-    'services.taxi.cta': 'Book Taxi',
-    'services.why_choose': 'Why Choose MediTransport Frankfurt?',
-    'services.availability': '24/7 Availability',
-    'services.availability_desc': 'Round-the-clock service when you need us most',
-    'services.expertise': 'Medical Expertise',
-    'services.expertise_desc': 'Trained professionals with medical knowledge',
-    'services.coverage': 'Local Coverage',
-    'services.coverage_desc': 'Serving Frankfurt and surrounding areas',
-    'services.care': 'Patient-Centered Care',
-    'services.care_desc': 'Comfort and safety are our top priorities',
-    
-    // Testimonials
-    'testimonials.title': 'What Our Clients Say',
-    'testimonials.subtitle': 'Read testimonials from satisfied customers who trust us with their transportation needs',
-    
+    services: {
+      title: 'Our Services',
+      subtitle: 'We offer a wide range of transport services to meet your needs.',
+      service1: {
+        title: 'Medical Transport',
+        description: 'Safe and comfortable transport for patients to medical appointments and facilities.',
+      },
+      service2: {
+        title: 'Wheelchair Transport',
+        description: 'Accessible transport for wheelchair users with specially equipped vehicles.',
+      },
+      service3: {
+        title: 'Dialysis Transport',
+        description: 'Regular and reliable transport for dialysis patients.',
+      },
+      service4: {
+        title: 'Airport Transfer',
+        description: 'Punctual and convenient transfer to and from Frankfurt Airport.',
+      },
+      service5: {
+        title: 'Courier Services',
+        description: 'Fast and reliable delivery of documents and packages.',
+      },
+      service6: {
+        title: 'Errand Services',
+        description: 'Running errands and shopping for people with limited mobility.',
+      },
+    },
+    // Testimonials Section
+    testimonials: {
+      title: 'What our customers say',
+      subtitle: 'Experiences of our customers with our transport services.',
+      testimonial1: {
+        name: 'Maria Schmidt',
+        text: 'The medical transport was on time and very pleasant. The staff was friendly and helpful.',
+      },
+      testimonial2: {
+        name: 'Hans Müller',
+        text: 'I am very satisfied with the wheelchair transport. The vehicle was clean and well equipped.',
+      },
+      testimonial3: {
+        name: 'Julia Weber',
+        text: 'The dialysis trips are always reliable and punctual. I can fully rely on it.',
+      },
+    },
+    // Footer Section
+    footer: {
+      company_name: 'Taxi OM Krankentransport',
+      address: 'Hauptstraße 123, 60313 Frankfurt am Main',
+      contact_info: 'info@taxi-om-krankentransport.de',
+      phone: '+49 69 123 456 789',
+      opening_hours: 'Mon-Fri: 8:00-18:00',
+      emergency_service: '24/7 Emergency Service',
+      all_rights_reserved: 'All rights reserved',
+    },
     // Contact Section
-    'contact.title': 'Contact Us',
-    'contact.subtitle': 'Get in touch for emergency transport or to book our services. We\'re here to help 24/7.',
-    'contact.get_in_touch': 'Get in Touch',
-    'contact.emergency_hotline': 'Emergency Hotline',
-    'contact.available_24_7': 'Available 24/7',
-    'contact.email_us': 'Email Us',
-    'contact.respond_2h': 'We\'ll respond within 2 hours',
-    'contact.location': 'Our Location',
-    'contact.office_hours': 'Office Hours',
-    'contact.office_hours_time': 'Mon-Fri: 8:00 - 18:00',
-    'contact.emergency_service': 'Emergency service: 24/7',
-    'contact.emergency_services': 'Emergency Services',
-    'contact.emergency_notice': 'For immediate medical transport or emergency situations, call our 24/7 hotline directly.',
-    'contact.send_message': 'Send us a Message',
-    'contact.full_name': 'Full Name',
-    'contact.phone_number': 'Phone Number',
-    'contact.email_address': 'Email Address',
-    'contact.message': 'Message',
-    'contact.message_placeholder': 'Please describe your transport needs or inquiry...',
-    'contact.send': 'Send Message',
-    'contact.map_placeholder': 'Interactive map would be embedded here',
-    
-    // Footer
-    'footer.company_desc': 'Your trusted partner for private ambulance and taxi services in Frankfurt and surrounding areas. We provide professional, reliable, and compassionate transportation services 24/7.',
-    'footer.quick_links': 'Quick Links',
-    'footer.contact_info': 'Contact Info',
-    'footer.professional_services': 'Professional Transport Services',
-    'footer.rights_reserved': '© 2024 MediTransport Frankfurt. All rights reserved.',
-    'footer.privacy': 'Privacy Policy',
-    'footer.imprint': 'Imprint'
+    contact: {
+      title: 'Contact Us',
+      subtitle: 'Need medical transport or taxi service? We\'re here to help.',
+      get_in_touch: 'Get in Touch',
+      emergency_hotline: 'Emergency Hotline',
+      email_us: 'Email Us',
+      location: 'Location',
+      office_hours: 'Office Hours',
+      office_hours_time: 'Mon-Fri: 8:00-18:00',
+      available_24_7: '24/7 Available',
+      respond_2h: 'Response within 2 hours',
+      emergency_service: '24/7 Emergency Service',
+      emergency_services: 'Emergency Services',
+      emergency_notice: 'For life-threatening emergencies, please call 112. Our service is for scheduled transports and non-critical medical situations.',
+      send_message: 'Send Message',
+      full_name: 'Full Name',
+      phone_number: 'Phone Number',
+      email_address: 'Email Address',
+      message: 'Message',
+      message_placeholder: 'Describe your transport requirements...',
+      send: 'Send',
+      map_placeholder: 'Map will be displayed here',
+      taxi_booking: 'Taxi Booking',
+      ambulance_booking: 'Ambulance Booking',
+      common_fields: {
+        first_name: 'First Name',
+        last_name: 'Last Name',
+        address: 'Address',
+        phone: 'Phone',
+        email: 'Email',
+        location_from: 'Pickup Location',
+        location_to: 'Destination'
+      },
+      taxi_fields: {
+        time: 'Preferred Time',
+        additional_info: 'Additional Information'
+      },
+      ambulance_fields: {
+        guests: 'Number of Passengers',
+        health_insurance: 'Health Insurance',
+        amenities: 'Transport Type',
+        additional_info: 'Additional Information',
+        insurance_options: {
+          public: 'Public Health Insurance',
+          private: 'Private Health Insurance',
+          self_pay: 'Self-Pay',
+          other: 'Other'
+        },
+        amenity_options: {
+          sitting: 'Sitting',
+          laying: 'Lying Down',
+          wheelchair: 'Wheelchair'
+        }
+      }
+    }
   }
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'de');
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('de'); // German as default
+  useEffect(() => {
+    localStorage.setItem('language', language);
+  }, [language]);
 
   const t = (key: string): string => {
-    return translations[language][key] || key;
+    const keys = key.split('.');
+    let value: any = translations[language as keyof typeof translations];
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k as keyof typeof value];
+      } else {
+        return key;
+      }
+    }
+    return typeof value === 'string' ? value : key;
   };
 
   return (
@@ -202,10 +324,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   );
 };
 
-export const useLanguage = () => {
+export const useLanguage = (): LanguageContextProps => {
   const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };

@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
+import TaxiBookingForm from '@/components/TaxiBookingForm';
+import AmbulanceBookingForm from '@/components/AmbulanceBookingForm';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +17,7 @@ const ContactSection = () => {
     phone: '',
     message: ''
   });
+  const [activeTab, setActiveTab] = useState('general');
   const { toast } = useToast();
   const { t } = useLanguage();
 
@@ -47,9 +50,9 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: t('contact.email_us'),
-      info: "info@meditransport-frankfurt.de",
+      info: "info@taxi-om-krankentransport.de",
       subinfo: t('contact.respond_2h'),
-      href: "mailto:info@meditransport-frankfurt.de",
+      href: "mailto:info@taxi-om-krankentransport.de",
       color: "medical-blue"
     },
     {
@@ -136,15 +139,50 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Forms */}
           <div className="animate-slide-in-right">
-            <Card className="shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl text-gray-900">{t('contact.send_message')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+            {/* Tab Navigation */}
+            <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
+              <button
+                onClick={() => setActiveTab('general')}
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'general'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                General Contact
+              </button>
+              <button
+                onClick={() => setActiveTab('taxi')}
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'taxi'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                🚕 {t('contact.taxi_booking')}
+              </button>
+              <button
+                onClick={() => setActiveTab('ambulance')}
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'ambulance'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                🚑 {t('contact.ambulance_booking')}
+              </button>
+            </div>
+
+            {/* Tab Content */}
+            {activeTab === 'general' && (
+              <Card className="shadow-xl">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-gray-900">{t('contact.send_message')}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                         {t('contact.full_name')} *
@@ -160,65 +198,70 @@ const ContactSection = () => {
                         placeholder={t('contact.full_name')}
                       />
                     </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                          {t('contact.email_address')} *
+                        </label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="w-full"
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                          {t('contact.phone_number')}
+                        </label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="w-full"
+                          placeholder="+49 69 ..."
+                        />
+                      </div>
+                    </div>
+                    
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                        {t('contact.phone_number')}
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                        {t('contact.message')} *
                       </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
+                      <Textarea
+                        id="message"
+                        name="message"
+                        required
+                        value={formData.message}
                         onChange={handleInputChange}
+                        rows={5}
                         className="w-full"
-                        placeholder="+49 69 ..."
+                        placeholder={t('contact.message_placeholder')}
                       />
                     </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('contact.email_address')} *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('contact.message')} *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={5}
-                      className="w-full"
-                      placeholder={t('contact.message_placeholder')}
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-medical-blue hover:bg-medical-blue-dark text-white py-3"
-                    size="lg"
-                  >
-                    <Send className="mr-2 h-5 w-5" />
-                    {t('contact.send')}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-medical-blue hover:bg-medical-blue-dark text-white py-3"
+                      size="lg"
+                    >
+                      <Send className="mr-2 h-5 w-5" />
+                      {t('contact.send')}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            )}
+
+            {activeTab === 'taxi' && <TaxiBookingForm />}
+            {activeTab === 'ambulance' && <AmbulanceBookingForm />}
           </div>
         </div>
 
