@@ -1,3 +1,4 @@
+
 export const enTranslations = {
   // Header
   nav: {
@@ -189,17 +190,25 @@ export const enTranslations = {
   about: {
     title: 'About Us',
     subtitle: 'Get to know us',
+    introduction_title: 'We introduce ourselves',
+    expertise_title: 'Our Expertise',
+    advantages_title: 'Our Advantages',
     intro: 'At Taxi OM Krankentransport we can look back on over 15 years of professional experience in both taxi and ambulance transport.',
     experience: 'Our many years of experience and commitment to high-quality service make us your first choice in the region. We are committed to ensuring every transport is as pleasant and stress-free as possible.',
     choice: 'If you\'re looking for a trustworthy taxi and ambulance company, Taxi OM Krankentransport is the right choice for you. With over 15 years of professional experience, we are your competent partner for a wide variety of needs, whether airport transfers, school transportation, dialysis trips, senior citizen trips, trips for the disabled, or city trips.',
     patient_transport: 'In the area of patient transport, we offer transport by stretcher, seated, or walking, depending on your individual needs. Our service is always tailored to your wishes and requirements.',
     billing: 'We place great importance on transparent billing. Therefore, you can rest assured that you can submit your invoice to AOK and all other health insurance providers. Trust in our expertise and reliability in taxi and ambulance services.',
     coverage_title: 'Our Service Area',
+    coverage_description: 'We are available throughout the region and offer reliable transport services in the following areas:',
     coverage_areas: 'Hanau, Bruchköbel, Nidderau, Erlensee, Rodenbach, Maintal, Alzenau, Kahl am Main, Kleinkrotzenburg, Hainburg, Langenselbold, Neuberg, Frankfurt Am Main',
     years_experience: '15+',
     years_experience_text: 'Years Experience',
     professional_service: 'Professional Service',
     transparent_billing: 'Transparent Billing',
-    wide_coverage: 'Wide Coverage'
+    wide_coverage: 'Wide Coverage',
+    advantage_1: '24/7 Availability',
+    advantage_2: 'Experienced Professional Staff',
+    advantage_3: 'Modern Vehicle Fleet',
+    advantage_4: 'Transparent Billing'
   }
 };

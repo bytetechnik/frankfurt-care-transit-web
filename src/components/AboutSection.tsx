@@ -29,7 +29,7 @@ const AboutSection = () => {
                 <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Users className="w-4 h-4 text-primary" />
                 </div>
-                Wir stellen uns vor
+                {t('about.introduction_title')}
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>{t('about.intro')}</p>
@@ -42,7 +42,7 @@ const AboutSection = () => {
                 <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
                   <CheckCircle className="w-4 h-4 text-primary" />
                 </div>
-                Unsere Expertise
+                {t('about.expertise_title')}
               </h3>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>{t('about.choice')}</p>
@@ -97,31 +97,31 @@ const AboutSection = () => {
 
             {/* Key Features */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Unsere Vorteile</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">{t('about.advantages_title')}</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
-                  <span className="text-gray-700">24/7 Verfügbarkeit</span>
+                  <span className="text-gray-700">{t('about.advantage_1')}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
-                  <span className="text-gray-700">Erfahrenes Fachpersonal</span>
+                  <span className="text-gray-700">{t('about.advantage_2')}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
-                  <span className="text-gray-700">Moderne Fahrzeugflotte</span>
+                  <span className="text-gray-700">{t('about.advantage_3')}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
-                  <span className="text-gray-700">Transparente Abrechnung</span>
+                  <span className="text-gray-700">{t('about.advantage_4')}</span>
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@ const AboutSection = () => {
               <h3 className="text-2xl font-bold text-gray-900">{t('about.coverage_title')}</h3>
             </div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Wir sind in der gesamten Region für Sie da und bieten zuverlässige Transportdienste in folgenden Gebieten:
+              {t('about.coverage_description')}
             </p>
           </div>
           

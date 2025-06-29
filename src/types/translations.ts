@@ -127,18 +127,26 @@ export interface Translations {
   about: {
     title: string;
     subtitle: string;
+    introduction_title: string;
+    expertise_title: string;
+    advantages_title: string;
     intro: string;
     experience: string;
     choice: string;
     patient_transport: string;
     billing: string;
     coverage_title: string;
+    coverage_description: string;
     coverage_areas: string;
     years_experience: string;
     years_experience_text: string;
     professional_service: string;
     transparent_billing: string;
     wide_coverage: string;
+    advantage_1: string;
+    advantage_2: string;
+    advantage_3: string;
+    advantage_4: string;
   };
   contact: {
     title: string;

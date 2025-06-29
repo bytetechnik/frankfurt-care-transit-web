@@ -1,3 +1,4 @@
+
 export const deTranslations = {
   // Header
   nav: {
@@ -189,17 +190,25 @@ export const deTranslations = {
   about: {
     title: 'Über uns',
     subtitle: 'Lernen Sie uns kennen',
+    introduction_title: 'Wir stellen uns vor',
+    expertise_title: 'Unsere Expertise',
+    advantages_title: 'Unsere Vorteile',
     intro: 'Bei Taxi OM Krankentransport können wir auf über 15 Jahre professionelle Erfahrung sowohl im Taxi- als auch im Krankentransport zurückblicken.',
     experience: 'Unsere langjährige Erfahrung und unser Engagement für hochwertigen Service machen uns zu Ihrer ersten Wahl in der Region. Wir sind bestrebt, jeden Transport so angenehm und stressfrei wie möglich zu gestalten.',
     choice: 'Wenn Sie nach einem vertrauenswürdigen Taxi- und Krankentransportunternehmen suchen, ist Taxi OM Krankentransport die richtige Wahl für Sie. Mit über 15 Jahren professioneller Erfahrung sind wir Ihr kompetenter Partner für eine Vielzahl von Bedürfnissen, ob Flughafentransfers, Schülertransporte, Dialysefahrten, Seniorenfahrten, Behindertenfahrten oder Stadtfahrten.',
     patient_transport: 'Im Bereich des Patiententransports bieten wir Transporte im Liegen, Sitzen oder Gehen, je nach Ihren individuellen Bedürfnissen. Unser Service ist immer auf Ihre Wünsche und Anforderungen zugeschnitten.',
     billing: 'Wir legen großen Wert auf transparente Abrechnung. Daher können Sie sicher sein, dass Sie Ihre Rechnung bei der AOK und allen anderen Krankenkassen einreichen können. Vertrauen Sie auf unsere Expertise und Zuverlässigkeit bei Taxi- und Krankentransportdiensten.',
     coverage_title: 'Unser Einzugsgebiet',
+    coverage_description: 'Wir sind in der gesamten Region für Sie da und bieten zuverlässige Transportdienste in folgenden Gebieten:',
     coverage_areas: 'Hanau, Bruchköbel, Nidderau, Erlensee, Rodenbach, Maintal, Alzenau, Kahl am Main, Kleinkrotzenburg, Hainburg, Langenselbold, Neuberg, Frankfurt Am Main',
     years_experience: '15+',
     years_experience_text: 'Jahre Erfahrung',
     professional_service: 'Professioneller Service',
     transparent_billing: 'Transparente Abrechnung',
-    wide_coverage: 'Breite Abdeckung'
+    wide_coverage: 'Breite Abdeckung',
+    advantage_1: '24/7 Verfügbarkeit',
+    advantage_2: 'Erfahrenes Fachpersonal',
+    advantage_3: 'Moderne Fahrzeugflotte',
+    advantage_4: 'Transparente Abrechnung'
   }
 };
