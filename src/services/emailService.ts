@@ -1,10 +1,6 @@
 
 import emailjs from '@emailjs/browser';
-
-// EmailJS configuration - you'll need to replace these with your actual values
-const EMAILJS_SERVICE_ID = 'your_service_id'; // Replace with your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = 'your_template_id'; // Replace with your EmailJS template ID
-const EMAILJS_PUBLIC_KEY = 'your_public_key'; // Replace with your EmailJS public key
+import { EMAIL_CONFIG } from '../config/emailConfig';
 
 export interface BookingFormData {
   name: string;
@@ -22,8 +18,11 @@ export interface BookingFormData {
 
 export const sendBookingEmail = async (formData: BookingFormData): Promise<boolean> => {
   try {
+    // Convert service type to German
+    const serviceTypeGerman = formData.serviceType === 'taxi' ? 'Taxi' : 'Krankentransport';
+    
     const templateParams = {
-      to_email: 'rafayet.cse@gmail.com',
+      to_email: EMAIL_CONFIG.RECIPIENT_EMAIL,
       from_name: formData.name,
       from_email: formData.email,
       phone: formData.phone,
@@ -31,18 +30,18 @@ export const sendBookingEmail = async (formData: BookingFormData): Promise<boole
       destination: formData.destination,
       date: formData.date,
       time: formData.time,
-      passengers: formData.passengers || 'Not specified',
-      service_type: formData.serviceType,
-      medical_condition: formData.medicalCondition || 'Not specified',
-      special_requirements: formData.specialRequirements || 'None',
-      message: `New ${formData.serviceType} booking request from ${formData.name}`
+      passengers: formData.passengers || 'Nicht angegeben',
+      service_type: serviceTypeGerman,
+      medical_condition: formData.medicalCondition || 'Nicht angegeben',
+      special_requirements: formData.specialRequirements || 'Keine',
+      message: `Neue ${serviceTypeGerman} Buchungsanfrage von ${formData.name}`
     };
 
     const response = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
+      EMAIL_CONFIG.SERVICE_ID,
+      EMAIL_CONFIG.TEMPLATE_ID,
       templateParams,
-      EMAILJS_PUBLIC_KEY
+      EMAIL_CONFIG.PUBLIC_KEY
     );
 
     console.log('Email sent successfully:', response);
