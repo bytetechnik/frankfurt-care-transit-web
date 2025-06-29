@@ -1,4 +1,3 @@
-
 import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -15,13 +14,13 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <div className="bg-white p-2 rounded-lg">
                 <img 
-                  src="/lovable-uploads/95c6b3c6-7b8d-4f23-b584-8d0e5f4a6c8b.png" 
-                  alt="Taxi OM Krankentransport Logo" 
+                  src="/lovable-uploads/95bc8333-1b8b-47ec-8e9a-ff1cabe0ab78.png" 
+                  alt="OM Krankenwagen und Taxi Logo" 
                   className="h-6 w-6 object-contain"
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Taxi OM Krankentransport</h3>
+                <h3 className="text-xl font-bold">OM Krankenwagen und Taxi</h3>
                 <p className="text-gray-400 text-sm">{t('footer.professional_services')}</p>
               </div>
             </div>
