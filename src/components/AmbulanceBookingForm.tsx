@@ -139,12 +139,11 @@ const AmbulanceBookingForm = () => {
               />
             </div>
             <div>
-              <Label htmlFor="email">{t('contact.common_fields.email')} *</Label>
+              <Label htmlFor="email">{t('contact.common_fields.email')}</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
-                required
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="your.email@example.com"
@@ -199,9 +198,9 @@ const AmbulanceBookingForm = () => {
                   <SelectValue placeholder="Select transport type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="sitting">{t('contact.ambulance_fields.amenity_options.sitting')}</SelectItem>
-                  <SelectItem value="laying">{t('contact.ambulance_fields.amenity_options.laying')}</SelectItem>
-                  <SelectItem value="wheelchair">{t('contact.ambulance_fields.amenity_options.wheelchair')}</SelectItem>
+                  <SelectItem value="stretcher">{t('contact.ambulance_fields.amenity_options.stretcher')}</SelectItem>
+                  <SelectItem value="seated">{t('contact.ambulance_fields.amenity_options.seated')}</SelectItem>
+                  <SelectItem value="walking">{t('contact.ambulance_fields.amenity_options.walking')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -214,9 +213,15 @@ const AmbulanceBookingForm = () => {
                 <SelectValue placeholder="Select health insurance type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="public">{t('contact.ambulance_fields.insurance_options.public')}</SelectItem>
+                <SelectItem value="aok">{t('contact.ambulance_fields.insurance_options.aok')}</SelectItem>
+                <SelectItem value="tk">{t('contact.ambulance_fields.insurance_options.tk')}</SelectItem>
+                <SelectItem value="barmer">{t('contact.ambulance_fields.insurance_options.barmer')}</SelectItem>
+                <SelectItem value="dak">{t('contact.ambulance_fields.insurance_options.dak')}</SelectItem>
+                <SelectItem value="kkh">{t('contact.ambulance_fields.insurance_options.kkh')}</SelectItem>
+                <SelectItem value="ik">{t('contact.ambulance_fields.insurance_options.ik')}</SelectItem>
+                <SelectItem value="bkk">{t('contact.ambulance_fields.insurance_options.bkk')}</SelectItem>
+                <SelectItem value="knappschaft">{t('contact.ambulance_fields.insurance_options.knappschaft')}</SelectItem>
                 <SelectItem value="private">{t('contact.ambulance_fields.insurance_options.private')}</SelectItem>
-                <SelectItem value="self_pay">{t('contact.ambulance_fields.insurance_options.self_pay')}</SelectItem>
                 <SelectItem value="other">{t('contact.ambulance_fields.insurance_options.other')}</SelectItem>
               </SelectContent>
             </Select>

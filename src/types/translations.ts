@@ -168,15 +168,21 @@ export interface Translations {
       amenities: string;
       additional_info: string;
       insurance_options: {
-        public: string;
+        aok: string;
+        tk: string;
+        barmer: string;
+        dak: string;
+        kkh: string;
+        ik: string;
+        bkk: string;
+        knappschaft: string;
         private: string;
-        self_pay: string;
         other: string;
       };
       amenity_options: {
-        sitting: string;
-        laying: string;
-        wheelchair: string;
+        stretcher: string;
+        seated: string;
+        walking: string;
       };
     };
   };

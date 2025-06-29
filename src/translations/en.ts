@@ -164,18 +164,24 @@ export const enTranslations = {
     ambulance_fields: {
       guests: 'Number of Passengers',
       health_insurance: 'Health Insurance',
-      amenities: 'Transport Type',
+      amenities: 'Transportation Type',
       additional_info: 'Additional Information',
       insurance_options: {
-        public: 'Public Health Insurance',
+        aok: 'AOK',
+        tk: 'Techniker Krankenkasse',
+        barmer: 'BARMER',
+        dak: 'DAK-Gesundheit',
+        kkh: 'KKH Kaufmännische Krankenkasse',
+        ik: 'IKK',
+        bkk: 'BKK',
+        knappschaft: 'Knappschaft',
         private: 'Private Health Insurance',
-        self_pay: 'Self-Pay',
         other: 'Other'
       },
       amenity_options: {
-        sitting: 'Sitting',
-        laying: 'Lying Down',
-        wheelchair: 'Wheelchair'
+        stretcher: 'Stretcher Transport',
+        seated: 'Seated Transport',
+        walking: 'Walking Transport'
       }
     }
   }

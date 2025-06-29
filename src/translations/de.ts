@@ -167,15 +167,21 @@ export const deTranslations = {
       amenities: 'Transportart',
       additional_info: 'Zusätzliche Informationen',
       insurance_options: {
-        public: 'Gesetzliche Krankenversicherung',
+        aok: 'AOK',
+        tk: 'Techniker Krankenkasse',
+        barmer: 'BARMER',
+        dak: 'DAK-Gesundheit',
+        kkh: 'KKH Kaufmännische Krankenkasse',
+        ik: 'IKK',
+        bkk: 'BKK',
+        knappschaft: 'Knappschaft',
         private: 'Private Krankenversicherung',
-        self_pay: 'Selbstzahler',
         other: 'Andere'
       },
       amenity_options: {
-        sitting: 'Sitzend',
-        laying: 'Liegend',
-        wheelchair: 'Rollstuhl'
+        stretcher: 'Liegendtransport (Trage)',
+        seated: 'Sitzendtransport',
+        walking: 'Gehfähig'
       }
     }
   }

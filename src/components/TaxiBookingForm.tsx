@@ -112,12 +112,11 @@ const TaxiBookingForm = () => {
               />
             </div>
             <div>
-              <Label htmlFor="email">{t('contact.common_fields.email')} *</Label>
+              <Label htmlFor="email">{t('contact.common_fields.email')}</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
-                required
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="your.email@example.com"
