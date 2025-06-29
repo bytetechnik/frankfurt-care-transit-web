@@ -118,7 +118,7 @@ export const enTranslations = {
     opening_hours: 'Mon-Fri: 8:00-18:00',
     emergency_service: '24/7 Emergency Service',
     all_rights_reserved: 'All rights reserved',
-    rights_reserved: '© 2024 Taxi OM Krankentransport. All rights reserved.',
+    rights_reserved: '© 2025 Taxi OM Krankentransport. All rights reserved.',
     privacy: 'Privacy Policy',
     imprint: 'Imprint'
   },
