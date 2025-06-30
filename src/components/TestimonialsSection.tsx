@@ -1,132 +1,76 @@
 
-import { useState, useEffect } from 'react';
-import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from 'react';
+import { Star, Quote } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const TestimonialsSection = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const { t } = useLanguage();
 
   const testimonials = [
     {
-      name: "Maria Schmidt",
-      location: "Frankfurt",
-      rating: 5,
-      text: "Excellent service! The paramedics were professional and caring during my mother's transport to the hospital. Highly recommended for anyone needing medical transport in Frankfurt.",
-      service: "Private Ambulance"
+      name: t('testimonials.testimonial1.name'),
+      text: t('testimonials.testimonial1.text'),
+      rating: 5
     },
     {
-      name: "Hans Mueller",
-      location: "Offenbach",
-      rating: 5,
-      text: "Reliable taxi service for airport transfers. Always on time and comfortable vehicles. The drivers are courteous and know the Frankfurt area very well.",
-      service: "Taxi Service"
+      name: t('testimonials.testimonial2.name'), 
+      text: t('testimonials.testimonial2.text'),
+      rating: 5
     },
     {
-      name: "Elena Petrov",
-      location: "Bad Vilbel",
-      rating: 5,
-      text: "When my elderly father needed regular transport to dialysis, MediTransport was there for us. Professional, punctual, and compassionate service every time.",
-      service: "Private Ambulance"
-    },
-    {
-      name: "Thomas Weber",
-      location: "Frankfurt",
-      rating: 5,
-      text: "Used their taxi service multiple times for business trips. Clean vehicles, professional drivers, and excellent knowledge of Frankfurt traffic patterns.",
-      service: "Taxi Service"
+      name: t('testimonials.testimonial3.name'),
+      text: t('testimonials.testimonial3.text'),
+      rating: 5
     }
   ];
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextTestimonial, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="py-20 bg-medical-blue-light">
+    <section className="py-16 sm:py-20 bg-gradient-to-br from-medical-blue-light via-white to-emergency-amber-light">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('testimonials.title')}</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            {t('testimonials.title')}
+          </h2>
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
             {t('testimonials.subtitle')}
           </p>
         </div>
 
-        {/* Testimonial Carousel */}
-        <div className="max-w-4xl mx-auto relative">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 animate-fade-in">
-            <div className="flex justify-center mb-6">
-              <Quote className="h-12 w-12 text-medical-blue opacity-20" />
-            </div>
-            
-            <div className="text-center">
-              {/* Stars */}
-              <div className="flex justify-center mb-6">
-                {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-
-              {/* Testimonial Text */}
-              <blockquote className="text-xl text-gray-700 mb-8 leading-relaxed italic">
-                "{testimonials[currentTestimonial].text}"
-              </blockquote>
-
-              {/* Author Info */}
-              <div className="border-t border-gray-200 pt-6">
-                <h4 className="font-semibold text-gray-900 text-lg">
-                  {testimonials[currentTestimonial].name}
-                </h4>
-                <p className="text-gray-600">
-                  {testimonials[currentTestimonial].location} • {testimonials[currentTestimonial].service}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <div className="flex justify-center mt-8 space-x-4">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={prevTestimonial}
-              className="rounded-full p-2 hover:bg-medical-blue hover:text-white transition-colors"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={nextTestimonial}
-              className="rounded-full p-2 hover:bg-medical-blue hover:text-white transition-colors"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-
-          {/* Indicators */}
-          <div className="flex justify-center mt-4 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentTestimonial ? 'bg-medical-blue' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm h-full">
+              <CardContent className="p-6 sm:p-8 text-center flex flex-col justify-between h-full">
+                {/* Quote Icon */}
+                <div className="mb-4 sm:mb-6">
+                  <Quote className="h-8 w-8 sm:h-10 sm:w-10 text-medical-blue mx-auto opacity-60" />
+                </div>
+                
+                {/* Testimonial Text */}
+                <div className="flex-grow mb-4 sm:mb-6">
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed italic px-2">
+                    "{testimonial.text}"
+                  </p>
+                </div>
+                
+                {/* Rating */}
+                <div className="flex justify-center mb-3 sm:mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                
+                {/* Customer Name */}
+                <div>
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-900">
+                    {testimonial.name}
+                  </h4>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

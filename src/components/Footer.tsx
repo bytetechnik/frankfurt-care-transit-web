@@ -1,3 +1,4 @@
+
 import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -8,23 +9,23 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 xl:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-white p-2 rounded-lg">
+              <div className="bg-white p-2 rounded-lg flex-shrink-0">
                 <img 
                   src="/resources/img/logo.png" 
                   alt="OM Krankenwagen und Taxi Logo" 
                   className="h-6 w-6 object-contain"
                 />
               </div>
-              <div>
-                <h3 className="text-xl font-bold">OM Krankentransport und Taxi</h3>
-                <p className="text-gray-400 text-sm">{t('footer.professional_services')}</p>
+              <div className="min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold leading-tight">OM Krankentransport und Taxi</h3>
+                <p className="text-gray-400 text-xs sm:text-sm leading-tight">{t('footer.professional_services')}</p>
               </div>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
               {t('footer.company_desc')}
             </p>
             <div className="flex space-x-4">
@@ -43,26 +44,26 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4">{t('footer.quick_links')}</h4>
+          <div className="xl:col-span-1">
+            <h4 className="font-semibold text-base sm:text-lg mb-4">{t('footer.quick_links')}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-gray-300 hover:text-white transition-colors">
+                <a href="#home" className="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">
                   {t('header.home')}
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                <a href="#services" className="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">
                   {t('header.services')}
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-gray-300 hover:text-white transition-colors">
+                <a href="#about" className="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">
                   {t('header.about')}
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
+                <a href="#contact" className="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">
                   {t('header.contact')}
                 </a>
               </li>
@@ -70,29 +71,29 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4">{t('footer.contact_info')}</h4>
+          <div className="xl:col-span-1">
+            <h4 className="font-semibold text-base sm:text-lg mb-4">{t('footer.contact_info')}</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-emergency-amber" />
-                <a href="tel:+4917842687786" className="text-gray-300 hover:text-white transition-colors">
+                <Phone className="h-4 w-4 text-emergency-amber flex-shrink-0" />
+                <a href="tel:+4917842687786" className="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">
                   +49 17 84 26 87 86
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-emergency-amber" />
-                <div className="text-gray-300">
-                  <a href="mailto:info@taxiom.de" className="hover:text-white transition-colors block">
+              <div className="flex items-start space-x-3">
+                <Mail className="h-4 w-4 text-emergency-amber mt-1 flex-shrink-0" />
+                <div className="text-gray-300 min-w-0">
+                  <a href="mailto:info@taxiom.de" className="hover:text-white transition-colors block text-sm sm:text-base break-all">
                     info@taxiom.de
                   </a>
-                  <a href="mailto:info@omkrankentransport.de" className="hover:text-white transition-colors block">
+                  <a href="mailto:info@omkrankentransport.de" className="hover:text-white transition-colors block text-sm sm:text-base break-all">
                     info@omkrankentransport.de
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-emergency-amber mt-1" />
-                <span className="text-gray-300">
+                <MapPin className="h-4 w-4 text-emergency-amber mt-1 flex-shrink-0" />
+                <span className="text-gray-300 text-sm sm:text-base leading-relaxed">
                   Langstraße 37<br />
                   63486 Bruchköbel<br />
                   Germany
@@ -104,18 +105,18 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
               {t('footer.rights_reserved')}
             </p>
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            <p className="text-gray-400 text-xs sm:text-sm text-center">
               {t('footer.developed_by')} <a href="https://bytetechnik.de" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">ByteTechnik.de</a>
             </p>
-            <div className="flex space-x-6">
-              <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <div className="flex space-x-4 sm:space-x-6">
+              <Link to="/privacy" className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors whitespace-nowrap">
                 {t('footer.privacy')}
               </Link>
-              <Link to="/imprint" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <Link to="/imprint" className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors whitespace-nowrap">
                 {t('footer.imprint')}
               </Link>
             </div>
