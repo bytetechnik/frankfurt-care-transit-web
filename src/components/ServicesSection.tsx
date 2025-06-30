@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Ambulance, Car, Wheelchair, Heart, Plane, Package } from 'lucide-react';
+import { Ambulance, Car, accessibility, Heart, Plane, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -29,7 +28,7 @@ const ServicesSection = () => {
       formType: 'ambulance' as const
     },
     {
-      icon: Wheelchair,
+      icon: accessibility,
       title: t('services.service2.title'),
       description: t('services.service2.description'),
       formType: 'ambulance' as const
