@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TaxiBookingForm from '@/components/TaxiBookingForm';
 import AmbulanceBookingForm from '@/components/AmbulanceBookingForm';
@@ -7,6 +7,18 @@ import AmbulanceBookingForm from '@/components/AmbulanceBookingForm';
 const ContactTabs = () => {
   const [activeTab, setActiveTab] = useState('ambulance');
   const { t } = useLanguage();
+
+  useEffect(() => {
+    const handleTabSwitch = (event: CustomEvent) => {
+      setActiveTab(event.detail.activeTab);
+    };
+
+    window.addEventListener('switchContactTab', handleTabSwitch as EventListener);
+
+    return () => {
+      window.removeEventListener('switchContactTab', handleTabSwitch as EventListener);
+    };
+  }, []);
 
   return (
     <div className="animate-slide-in-right">

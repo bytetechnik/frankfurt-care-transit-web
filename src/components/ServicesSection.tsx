@@ -7,6 +7,21 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const ServicesSection = () => {
   const { t } = useLanguage();
 
+  const scrollToContact = (serviceType: 'ambulance' | 'taxi') => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Wait for scroll to complete, then trigger tab switch
+      setTimeout(() => {
+        // Dispatch custom event to switch tabs
+        window.dispatchEvent(new CustomEvent('switchContactTab', { 
+          detail: { activeTab: serviceType } 
+        }));
+      }, 800);
+    }
+  };
+
   const services = [
     {
       icon: Ambulance,
@@ -19,7 +34,8 @@ const ServicesSection = () => {
         t('services.ambulance.feature4')
       ],
       color: "medical-blue",
-      cta: t('services.ambulance.cta')
+      cta: t('services.ambulance.cta'),
+      serviceType: 'ambulance' as const
     },
     {
       icon: Car,
@@ -32,7 +48,8 @@ const ServicesSection = () => {
         t('services.taxi.feature4')
       ],
       color: "emergency-amber",
-      cta: t('services.taxi.cta')
+      cta: t('services.taxi.cta'),
+      serviceType: 'taxi' as const
     }
   ];
 
@@ -72,6 +89,7 @@ const ServicesSection = () => {
                   ))}
                 </ul>
                 <Button 
+                  onClick={() => scrollToContact(service.serviceType)}
                   className={`w-full ${service.color === 'medical-blue' 
                     ? 'bg-medical-blue hover:bg-medical-blue-dark' 
                     : 'bg-emergency-amber hover:bg-emergency-amber-dark'
