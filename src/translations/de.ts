@@ -12,7 +12,7 @@ export const deTranslations = {
       private: 'Taxi OM',
       ambulance: 'Krankentransport',
       and: '&',
-      taxi: 'Taxi Service'
+      taxi: 'Taxi Dienstleistungen'
     },
     description: 'Professioneller privater Krankentransport und Taxi-Service in Frankfurt. 24/7 verfügbar mit geschultem Personal und schneller Reaktionszeit.',
     feature: {
