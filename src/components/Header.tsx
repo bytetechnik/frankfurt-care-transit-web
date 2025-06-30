@@ -44,7 +44,7 @@ const Header = () => {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-medical-blue">Taxi OM Krankentransport</h1>
-              <p className="text-sm text-gray-600">Frankfurt</p>
+              <p className="text-sm text-gray-600">Rhein-Main Gebiet</p>
             </div>
           </Link>
 

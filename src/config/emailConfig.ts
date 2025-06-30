@@ -1,6 +1,4 @@
 
-// Email Configuration
-// Replace these values with your actual EmailJS credentials
 
 export const EMAIL_CONFIG = {
   // EmailJS Service ID (get from EmailJS dashboard)
@@ -13,13 +11,5 @@ export const EMAIL_CONFIG = {
   PUBLIC_KEY: 'DFtbL8GD5RHz0ZzvU',
   
   // Recipient email address
-  RECIPIENT_EMAIL: 'rafayet.cse@gmail.com'
+  RECIPIENT_EMAIL: 'rafayetrafi@gmail.com'
 };
-
-// Instructions for setup:
-// 1. Go to https://www.emailjs.com/
-// 2. Create an account
-// 3. Add your email service (Gmail, Outlook, etc.)
-// 4. Create an email template
-// 5. Get your Service ID, Template ID, and Public Key
-// 6. Replace the values above

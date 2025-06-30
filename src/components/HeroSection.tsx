@@ -28,19 +28,27 @@ const HeroSection = () => {
 
   const heroImages = [
     {
-      src: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      src: "/resources/img/banner/1.png",
       alt: "Emergency ambulance responding to call"
     },
     {
-      src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      src: "/resources/img/banner/2.png",
       alt: "Professional taxi service"
     },
     {
-      src: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      src: "/resources/img/banner/3.png",
       alt: "Medical personnel providing emergency care"
     },
     {
-      src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+      src: "/resources/img/banner/4.png",
+      alt: "Ambulance transport service"
+    },
+    {
+      src: "/resources/img/banner/5.png",
+      alt: "Ambulance transport service"
+    },
+    {
+      src: "/resources/img/banner/6.png",
       alt: "Ambulance transport service"
     }
   ];

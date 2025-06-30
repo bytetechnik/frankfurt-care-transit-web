@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <div className="bg-white p-2 rounded-lg">
                 <img 
-                  src="/lovable-uploads/95bc8333-1b8b-47ec-8e9a-ff1cabe0ab78.png" 
+                  src="/resources/img/logo.png" 
                   alt="OM Krankenwagen und Taxi Logo" 
                   className="h-6 w-6 object-contain"
                 />
