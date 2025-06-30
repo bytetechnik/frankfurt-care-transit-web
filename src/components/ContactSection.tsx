@@ -1,44 +1,37 @@
 
-import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import ContactInfo from './ContactInfo';
-import ContactTabs from './ContactTabs';
-import EmergencyNotice from './EmergencyNotice';
-import MapSection from './MapSection';
+import ContactInfo from '@/components/ContactInfo';
+import EmergencyNotice from '@/components/EmergencyNotice';
+import ContactTabs from '@/components/ContactTabs';
+import MapSection from '@/components/MapSection';
 
 const ContactSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            {t('contact.title')}
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('contact.title')}</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {t('contact.subtitle')}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-          {/* Left Column - Contact Info */}
-          <div className="lg:col-span-1 space-y-6 lg:space-y-8">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <div>
             <ContactInfo />
             <EmergencyNotice />
           </div>
 
-          {/* Right Column - Contact Forms */}
-          <div className="lg:col-span-2">
-            <ContactTabs />
-          </div>
+          {/* Contact Forms */}
+          <ContactTabs />
         </div>
 
-        {/* Map Section */}
-        <div className="mt-12 lg:mt-16">
-          <MapSection />
-        </div>
+        {/* Map Placeholder */}
+        <MapSection />
       </div>
     </section>
   );

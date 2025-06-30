@@ -1,159 +1,157 @@
 
-import React from 'react';
-import { Award, Users, MapPin, Clock } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { MapPin, Clock, Shield, Users, Award, CheckCircle } from 'lucide-react';
 
 const AboutSection = () => {
   const { t } = useLanguage();
 
-  const stats = [
-    {
-      icon: Award,
-      number: t('about.years_experience'),
-      label: t('about.years_experience_text'),
-      color: 'from-medical-blue to-medical-blue-dark'
-    }
-  ];
-
-  const advantages = [
-    {
-      icon: Clock,
-      title: t('about.advantage_1'),
-      color: 'from-emergency-amber to-emergency-amber-dark'
-    },
-    {
-      icon: Users,
-      title: t('about.advantage_2'),
-      color: 'from-medical-blue to-medical-blue-dark'
-    },
-    {
-      icon: Award,
-      title: t('about.advantage_3'),
-      color: 'from-emergency-amber to-emergency-amber-dark'
-    },
-    {
-      icon: MapPin,
-      title: t('about.advantage_4'),
-      color: 'from-medical-blue to-medical-blue-dark'
-    }
-  ];
-
   return (
-    <section id="about" className="py-16 sm:py-20 bg-white">
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            {t('about.title')}
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 mb-2">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <Award className="w-4 h-4" />
             {t('about.subtitle')}
-          </p>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t('about.title')}</h2>
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 lg:mb-16">
-          {/* Left Column - Content */}
-          <div className="space-y-6 lg:space-y-8">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+          {/* Left Side - Content */}
+          <div className="space-y-8">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Users className="w-4 h-4 text-primary" />
+                </div>
                 {t('about.introduction_title')}
               </h3>
-              <div className="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
+              <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>{t('about.intro')}</p>
                 <p>{t('about.experience')}</p>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <Card key={index} className="border-0 bg-gradient-to-r from-gray-50 to-gray-100 hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-4 sm:p-6 text-center">
-                      <div className={`mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center mb-3 sm:mb-4`}>
-                        <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                      </div>
-                      <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">
-                        {stat.number}
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-600 font-medium">
-                        {stat.label}
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <CheckCircle className="w-4 h-4 text-primary" />
+                </div>
+                {t('about.expertise_title')}
+              </h3>
+              <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>{t('about.choice')}</p>
+                <p>{t('about.patient_transport')}</p>
+                <p>{t('about.billing')}</p>
+              </div>
             </div>
           </div>
 
-          {/* Right Column - Image */}
-          <div className="relative">
-            <img
-              src="/resources/img/banner/2.png"
-              alt="About OM Krankentransport"
-              className="w-full h-auto rounded-2xl shadow-xl"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-medical-blue/10 to-emergency-amber/10 rounded-2xl"></div>
-          </div>
-        </div>
+          {/* Right Side - Stats and Features */}
+          <div className="space-y-8">
+            {/* Statistics */}
+            <div className="grid grid-cols-2 gap-6">
+              <Card className="text-center p-6 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 hover:shadow-lg transition-shadow">
+                <CardContent className="p-0">
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    {t('about.years_experience')}
+                  </div>
+                  <div className="text-sm text-gray-600 font-medium">
+                    {t('about.years_experience_text')}
+                  </div>
+                </CardContent>
+              </Card>
 
-        {/* Detailed Content */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
-          {/* Expertise Section */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 lg:mb-6">
-              {t('about.expertise_title')}
-            </h3>
-            <div className="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
-              <p>{t('about.choice')}</p>
-              <p>{t('about.patient_transport')}</p>
-              <p>{t('about.billing')}</p>
+              <Card className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:shadow-lg transition-shadow">
+                <CardContent className="p-0 flex flex-col items-center">
+                  <Shield className="w-8 h-8 text-green-600 mb-2" />
+                  <div className="text-sm text-gray-600 font-medium">
+                    {t('about.professional_service')}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center p-6 bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200 hover:shadow-lg transition-shadow">
+                <CardContent className="p-0 flex flex-col items-center">
+                  <Clock className="w-8 h-8 text-amber-600 mb-2" />
+                  <div className="text-sm text-gray-600 font-medium">
+                    {t('about.transparent_billing')}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-lg transition-shadow">
+                <CardContent className="p-0 flex flex-col items-center">
+                  <MapPin className="w-8 h-8 text-purple-600 mb-2" />
+                  <div className="text-sm text-gray-600 font-medium">
+                    {t('about.wide_coverage')}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-          </div>
 
-          {/* Coverage Area */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 lg:mb-6">
-              {t('about.coverage_title')}
-            </h3>
-            <div className="space-y-4">
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                {t('about.coverage_description')}
-              </p>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-medium">
-                  {t('about.coverage_areas')}
-                </p>
+            {/* Key Features */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">{t('about.advantages_title')}</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-gray-700">{t('about.advantage_1')}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-gray-700">{t('about.advantage_2')}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-gray-700">{t('about.advantage_3')}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-gray-700">{t('about.advantage_4')}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Advantages Grid */}
-        <div>
-          <h3 className="text-xl sm:text-2xl font-bold text-center text-gray-900 mb-8 lg:mb-12">
-            {t('about.advantages_title')}
-          </h3>
+        {/* Service Area Section */}
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">{t('about.coverage_title')}</h3>
+            </div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t('about.coverage_description')}
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {advantages.map((advantage, index) => {
-              const Icon = advantage.icon;
-              return (
-                <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm text-center h-full">
-                  <CardContent className="p-4 sm:p-6 flex flex-col items-center justify-center h-full">
-                    <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${advantage.color} rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                    </div>
-                    <h4 className="text-sm sm:text-base font-semibold text-gray-900 leading-tight px-2">
-                      {advantage.title}
-                    </h4>
-                  </CardContent>
-                </Card>
-              );
-            })}
+          <div className="flex flex-wrap justify-center gap-3">
+            {t('about.coverage_areas').split(', ').map((area, index) => (
+              <Badge 
+                key={index} 
+                variant="secondary" 
+                className="text-sm px-4 py-2 bg-gray-100 hover:bg-gray-200 transition-colors"
+              >
+                {area}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>
