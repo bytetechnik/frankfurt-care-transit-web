@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
       name: "Elena Petrov",
       location: "Bad Vilbel",
       rating: 5,
-      text: "When my elderly father needed regular transport to dialysis, MediTransport was there for us. Professional, punctual, and compassionate service every time.",
+      text: "When my elderly father needed regular transport to dialysis, Om Krankenwagen was there for us. Professional, punctual, and compassionate service every time.",
       service: "Private Ambulance"
     },
     {
