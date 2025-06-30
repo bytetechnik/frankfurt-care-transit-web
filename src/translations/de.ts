@@ -120,7 +120,8 @@ export const deTranslations = {
     all_rights_reserved: 'Alle Rechte vorbehalten',
     rights_reserved: '© 2025 Taxi OM Krankentransport. Alle Rechte vorbehalten.',
     privacy: 'Datenschutz',
-    imprint: 'Impressum'
+    imprint: 'Impressum',
+    developed_by: 'Entwickelt von',
   },
   // Contact Section
   contact: {

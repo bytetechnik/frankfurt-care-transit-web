@@ -108,6 +108,9 @@ const Footer = () => {
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
               {t('footer.rights_reserved')}
             </p>
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              {t('footer.developed_by')} <a href="https://bytetechnik.de" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">ByteTechnik.de</a>
+            </p>
             <div className="flex space-x-6">
               <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
                 {t('footer.privacy')}
