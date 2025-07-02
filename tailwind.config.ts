@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -123,6 +122,49 @@ export default {
 					'50%': {
 						boxShadow: '0 0 20px rgba(255, 107, 53, 0.8)'
 					}
+				},
+				glow: {
+					'0%': {
+						opacity: '0.4',
+						transform: 'scale(1)',
+					},
+					'50%': {
+						opacity: '0.6',
+						transform: 'scale(1.05)',
+					},
+					'100%': {
+						opacity: '0.4',
+						transform: 'scale(1)',
+					},
+				},
+				'emergency-pulse': {
+					'0%, 100%': {
+						transform: 'scale(1)',
+						boxShadow: '0 0 0 0 rgba(251, 146, 60, 0.7)'
+					},
+					'50%': {
+						transform: 'scale(1.05)',
+						boxShadow: '0 0 20px 10px rgba(251, 146, 60, 0)'
+					}
+				},
+				'emergency-ring': {
+					'0%': {
+						transform: 'scale(0.95)',
+						boxShadow: '0 0 0 0 rgba(251, 146, 60, 0.7)'
+					},
+					'70%': {
+						transform: 'scale(1)',
+						boxShadow: '0 0 0 15px rgba(251, 146, 60, 0)'
+					},
+					'100%': {
+						transform: 'scale(0.95)',
+						boxShadow: '0 0 0 0 rgba(251, 146, 60, 0)'
+					}
+				},
+				'emergency-shake': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-2px)' },
+					'20%, 40%, 60%, 80%': { transform: 'translateX(2px)' }
 				}
 			},
 			animation: {
@@ -130,7 +172,11 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-in-right': 'slide-in-right 0.6s ease-out',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				glow: 'glow 2s ease-in-out infinite',
+				'emergency-pulse': 'emergency-pulse 2s infinite',
+				'emergency-ring': 'emergency-ring 2s infinite',
+				'emergency-shake': 'emergency-shake 2.5s infinite',
 			}
 		}
 	},

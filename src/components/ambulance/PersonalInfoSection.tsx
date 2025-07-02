@@ -59,7 +59,7 @@ const PersonalInfoSection = ({ formData, onInputChange, t }: PersonalInfoSection
             required
             value={formData.phone}
             onChange={onInputChange}
-            placeholder="+49 69 ..."
+            placeholder="+49 ..."
           />
         </div>
         <div>

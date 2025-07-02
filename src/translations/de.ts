@@ -184,6 +184,16 @@ export const deTranslations = {
         seated: 'Sitzendtransport',
         walking: 'Gehfähig'
       }
+    },
+    form_messages: {
+      taxi_success_title: "Taxi-Buchung erfolgreich gesendet!",
+      taxi_success_desc: "Vielen Dank für Ihre Buchungsanfrage. Wir werden uns in Kürze bei Ihnen melden.",
+      error_title: "Fehler beim Senden",
+      error_desc: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+      sending: "Wird gesendet...",
+      select_passengers: "Anzahl der Passagiere wählen",
+      select_transport: "Transportart wählen",
+      select_insurance: "Krankenversicherung wählen"
     }
   },
   // About Section
@@ -265,7 +275,7 @@ export const deTranslations = {
     data_portability: 'Recht auf Datenübertragbarkeit',
     data_portability_text: 'Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen. Sofern Sie die direkte Übertragung der Daten an einen anderen Verantwortlichen verlangen, erfolgt dies nur, soweit es technisch machbar ist.',
     ssl_encryption: 'SSL- bzw. TLS-Verschlüsselung',
-    ssl_encryption_text: 'Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.',
+    ssl_encryption_text: 'Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.',
     info_deletion_correction: 'Auskunft, Sperrung, Löschung und Berichtigung',
     info_deletion_correction_text: 'Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.',
     processing_restriction: 'Recht auf Einschränkung der Verarbeitung',
@@ -278,7 +288,7 @@ export const deTranslations = {
     data_collection_section: '4. Datenerfassung auf dieser Website',
     cookies: 'Cookies',
     cookies_text1: 'Einige unserer Internetseiten verwenden sogenannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.',
-    cookies_text2: 'Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies". Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.',
+    cookies_text2: 'Die meisten der von uns verwendeten Cookies sind so genannte "Session-Cookies". Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.',
     cookies_text3: 'Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.',
     server_logs: 'Server-Log-Dateien',
     server_logs_text: 'Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:',
@@ -297,5 +307,9 @@ export const deTranslations = {
     third_party_text: 'Unsere Website bindet Inhalte von Drittanbietern ein. Dies können reine Inhaltselemente (z.B. News, Updates), aber auch Widgets (Funktionen wie Buchungssysteme) oder beispielsweise Schriftarten und technische Bibliotheken sein. Aus technischen Gründen erfolgt dies durch das Laden dieser Inhalte von anderen Servern. Dabei wird die aktuell von Ihrem Browser verwendete IP-Adresse und der vom anfragenden System verwendete Browser übertragen.',
     bing_maps: 'Routenplaner Bing Maps',
     bing_maps_text: 'Wir nutzen auf unserer Website interaktive Karten von Microsoft Bing Maps (Microsoft Corporation, One Microsoft Way, Redmond, Washington 98052, USA. Tel.: +1 (425) 882 8080), damit Sie unseren Standort sehen oder eine Route dorthin planen können. Bei der Nutzung dieses Dienstes werden vom Anbieter verschiedene persistente Cookies gesetzt. Dies können Sie über Ihre Browsereinstellungen verhindern (Opt-out). Bei Nutzung des Dienstes werden verschiedene Daten an den Anbieter übertragen.'
+  },
+  whatsapp: {
+    chat_now: "Jetzt chatten",
+    default_message: "Hallo, ich möchte einen Service buchen."
   }
 };

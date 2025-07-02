@@ -1,24 +1,75 @@
-
 import { Ambulance, Car, Clock, MapPin, Heart, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect } from 'react';
 
 const ServicesSection = () => {
   const { t } = useLanguage();
 
-  const scrollToContact = (serviceType: 'ambulance' | 'taxi') => {
+  useEffect(() => {
+    // Create IntersectionObserver to detect when contact section is in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Get the stored service type and dispatch event
+            const serviceType = sessionStorage.getItem('scrollToService');
+            if (serviceType) {
+              // Ensure the tab switch happens after a short delay to allow for DOM updates
+              setTimeout(() => {
+                window.dispatchEvent(
+                  new CustomEvent('switchContactTab', { 
+                    detail: { activeTab: serviceType } 
+                  })
+                );
+              }, 100);
+              sessionStorage.removeItem('scrollToService');
+            }
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.2, // Lower threshold for earlier detection
+        rootMargin: '-50px 0px' // Trigger slightly before the element comes into view
+      }
+    );
+
+    // Start observing the contact section
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      observer.observe(contactSection);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToContact = (serviceType: 'ambulance' | 'taxi') => {
+    // Store the service type for when scrolling completes
+    sessionStorage.setItem('scrollToService', serviceType);
+    
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      // Get header height for offset
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
       
-      // Wait for scroll to complete, then trigger tab switch
-      setTimeout(() => {
-        // Dispatch custom event to switch tabs
-        window.dispatchEvent(new CustomEvent('switchContactTab', { 
+      // Calculate the target scroll position
+      const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+      // Smooth scroll to position
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+
+      // Dispatch the event immediately as well
+      window.dispatchEvent(
+        new CustomEvent('switchContactTab', { 
           detail: { activeTab: serviceType } 
-        }));
-      }, 800);
+        })
+      );
     }
   };
 

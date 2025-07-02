@@ -54,8 +54,8 @@ const TaxiBookingForm = () => {
 
       if (success) {
         toast({
-          title: "Taxi-Buchung erfolgreich gesendet!",
-          description: "Vielen Dank für Ihre Buchungsanfrage. Wir werden uns in Kürze bei Ihnen melden.",
+          title: t('contact.form_messages.taxi_success_title'),
+          description: t('contact.form_messages.taxi_success_desc'),
         });
         setFormData({
           firstName: '',
@@ -70,16 +70,16 @@ const TaxiBookingForm = () => {
         });
       } else {
         toast({
-          title: "Fehler beim Senden",
-          description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+          title: t('contact.form_messages.error_title'),
+          description: t('contact.form_messages.error_desc'),
           variant: "destructive"
         });
       }
     } catch (error) {
       console.error('Email sending error:', error);
       toast({
-        title: "Fehler beim Senden",
-        description: "Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut.",
+        title: t('contact.form_messages.error_title'),
+        description: t('contact.form_messages.error_desc'),
         variant: "destructive"
       });
     } finally {
@@ -144,7 +144,7 @@ const TaxiBookingForm = () => {
                 required
                 value={formData.phone}
                 onChange={handleInputChange}
-                placeholder="+49 69 ..."
+                placeholder="+49 ..."
               />
             </div>
             <div>

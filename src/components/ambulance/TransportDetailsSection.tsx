@@ -1,4 +1,3 @@
-
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -44,7 +43,7 @@ const TransportDetailsSection = ({ formData, onInputChange, onSelectChange, t }:
           <Label htmlFor="guests">{t('contact.ambulance_fields.guests')} *</Label>
           <Select value={formData.guests} onValueChange={(value) => onSelectChange('guests', value)}>
             <SelectTrigger>
-              <SelectValue placeholder="Select number of passengers" />
+              <SelectValue placeholder={t('contact.form_messages.select_passengers')} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="1">1</SelectItem>
@@ -58,7 +57,7 @@ const TransportDetailsSection = ({ formData, onInputChange, onSelectChange, t }:
           <Label htmlFor="amenities">{t('contact.ambulance_fields.amenities')} *</Label>
           <Select value={formData.amenities} onValueChange={(value) => onSelectChange('amenities', value)}>
             <SelectTrigger>
-              <SelectValue placeholder="Select transport type" />
+              <SelectValue placeholder={t('contact.form_messages.select_transport')} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="stretcher">{t('contact.ambulance_fields.amenity_options.stretcher')}</SelectItem>

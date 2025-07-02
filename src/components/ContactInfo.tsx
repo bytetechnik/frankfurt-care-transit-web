@@ -10,7 +10,7 @@ const ContactInfo = () => {
     {
       icon: Phone,
       title: t('contact.emergency_hotline'),
-      info: "+49 69 123 456 789",
+      info: "+49 17 84 26 87 86",
       subinfo: t('contact.available_24_7'),
       href: "tel:+4969123456789",
       color: "emergency-amber"

@@ -39,45 +39,40 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-4">
-  <div>
-    <img
-      src={logo}
-      alt="Taxi OM Logo"
-      className="h-20 w-20 object-contain drop-shadow-lg"
-    />
-  </div>
-  <div className="flex flex-col justify-center">
-    <h1 className="text-2xl font-bold text-medical-blue">Taxi OM Krankentransport</h1>
-    <p className="text-sm text-gray-600">Rhein-Main Gebiet</p>
-  </div>
-</Link>
-
-
-
-
-
+            <div>
+              <img
+                src={logo}
+                alt="Taxi OM Logo"
+                className="h-20 w-20 object-contain drop-shadow-lg"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <h1 className="text-2xl font-bold text-medical-blue">Taxi OM Krankentransport</h1>
+              <p className="text-sm text-gray-600">Rhein-Main Gebiet</p>
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <button 
+            <button
               onClick={() => handleNavClick('home')}
               className="text-gray-700 hover:text-medical-blue transition-colors font-medium"
             >
               {t('nav.home')}
             </button>
-            <button 
+            <button
               onClick={() => handleNavClick('services')}
               className="text-gray-700 hover:text-medical-blue transition-colors font-medium"
             >
               {t('nav.services')}
             </button>
-            <button 
+            <button
               onClick={() => handleNavClick('about')}
               className="text-gray-700 hover:text-medical-blue transition-colors font-medium"
             >
               {t('nav.about')}
             </button>
-            <button 
+            <button
               onClick={() => handleNavClick('contact')}
               className="text-gray-700 hover:text-medical-blue transition-colors font-medium"
             >
@@ -92,8 +87,14 @@ const Header = () => {
               <Phone className="h-4 w-4" />
               <span className="font-semibold">+49 17 84 26 87 86</span>
             </a>
-            <Button className="bg-emergency-amber hover:bg-emergency-amber-dark text-white">
-              {t('hero.emergency_call')}
+            <Button 
+              className="relative bg-emergency-amber hover:bg-emergency-amber-dark text-white animate-emergency-ring overflow-visible group"
+            >
+              <span className="absolute inset-0 bg-emergency-amber rounded-md animate-emergency-pulse"></span>
+              <span className="relative flex items-center group-hover:animate-emergency-shake">
+                <Phone className="mr-2 h-4 w-4" />
+                {t('hero.emergency_call')}
+              </span>
             </Button>
           </div>
 
@@ -111,25 +112,25 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-4">
-              <button 
+              <button
                 onClick={() => handleNavClick('home')}
                 className="text-gray-700 hover:text-medical-blue transition-colors font-medium text-left"
               >
                 {t('nav.home')}
               </button>
-              <button 
+              <button
                 onClick={() => handleNavClick('services')}
                 className="text-gray-700 hover:text-medical-blue transition-colors font-medium text-left"
               >
                 {t('nav.services')}
               </button>
-              <button 
+              <button
                 onClick={() => handleNavClick('about')}
                 className="text-gray-700 hover:text-medical-blue transition-colors font-medium text-left"
               >
                 {t('nav.about')}
               </button>
-              <button 
+              <button
                 onClick={() => handleNavClick('contact')}
                 className="text-gray-700 hover:text-medical-blue transition-colors font-medium text-left"
               >
@@ -141,8 +142,14 @@ const Header = () => {
                   <Phone className="h-4 w-4" />
                   <span className="font-semibold">+49 17 84 26 87 86</span>
                 </a>
-                <Button className="w-full bg-emergency-amber hover:bg-emergency-amber-dark text-white">
-                  {t('hero.emergency_call')}
+                <Button 
+                  className="relative w-full bg-emergency-amber hover:bg-emergency-amber-dark text-white animate-emergency-ring overflow-visible group"
+                >
+                  <span className="absolute inset-0 bg-emergency-amber rounded-md animate-emergency-pulse"></span>
+                  <span className="relative flex items-center justify-center group-hover:animate-emergency-shake">
+                    <Phone className="mr-2 h-4 w-4" />
+                    {t('hero.emergency_call')}
+                  </span>
                 </Button>
               </div>
             </nav>

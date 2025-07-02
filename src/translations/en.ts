@@ -1,4 +1,3 @@
-
 export const enTranslations = {
   // Header
   nav: {
@@ -185,6 +184,16 @@ export const enTranslations = {
         seated: 'Seated Transport',
         walking: 'Walking Transport'
       }
+    },
+    form_messages: {
+      taxi_success_title: "Taxi Booking Successfully Sent!",
+      taxi_success_desc: "Thank you for your booking request. We will contact you shortly.",
+      error_title: "Error Sending Request",
+      error_desc: "There was a problem sending your request. Please try again.",
+      sending: "Sending...",
+      select_passengers: "Select number of passengers",
+      select_transport: "Select transport type",
+      select_insurance: "Select health insurance type"
     }
   },
   // About Section
@@ -298,5 +307,9 @@ export const enTranslations = {
     third_party_text: 'Our website integrates content from third-party providers. This can be pure content elements (e.g., news, updates), but also widgets (functions such as booking systems) or, for example, fonts and technical libraries. For technical reasons, this is done by loading this content from other servers. In this context, the IP address currently used by your browser and the browser used by the requesting system are transmitted.',
     bing_maps: 'Route planner Bing Maps',
     bing_maps_text: 'We use interactive maps from Microsoft Bing Maps (Microsoft Corporation, One Microsoft Way, Redmond, Washington 98052, USA. Phone: +1 (425) 882 8080) on our website so that you can see our location or plan a route there. When you use this service, various persistent cookies are set by the provider. You can prevent this via your browser settings (opt-out). If you use the service, various data is transferred to the provider.'
+  },
+  whatsapp: {
+    chat_now: "Chat Now",
+    default_message: "Hello, I would like to book a service."
   }
 };

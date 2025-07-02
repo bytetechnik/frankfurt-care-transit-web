@@ -1,4 +1,3 @@
-
 import { Phone, Clock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -25,6 +24,34 @@ const HeroSection = () => {
 
     return () => clearInterval(interval);
   }, [api]);
+
+  const scrollToContact = (serviceType: 'ambulance' | 'taxi') => {
+    // Store the service type for when scrolling completes
+    sessionStorage.setItem('scrollToService', serviceType);
+    
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      // Get header height for offset
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      
+      // Calculate the target scroll position
+      const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+      // Smooth scroll to position
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+
+      // Dispatch the event immediately as well
+      window.dispatchEvent(
+        new CustomEvent('switchContactTab', { 
+          detail: { activeTab: serviceType } 
+        })
+      );
+    }
+  };
 
   const heroImages = [
     {
@@ -90,15 +117,19 @@ const HeroSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button 
-                size="lg" 
-                className="bg-emergency-amber hover:bg-emergency-amber-dark text-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 animate-pulse-glow break-words"
+                size="lg"
+                className="relative bg-emergency-amber hover:bg-emergency-amber-dark text-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 break-words animate-emergency-ring overflow-visible group"
               >
-                <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
-                <span className="break-words">{t('hero.emergency_call')}</span>
+                <span className="absolute inset-0 rounded-md bg-emergency-amber animate-emergency-pulse"></span>
+                <span className="relative flex items-center justify-center group-hover:animate-emergency-shake">
+                  <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                  <span className="break-words">{t('hero.emergency_call')}</span>
+                </span>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
+                onClick={() => scrollToContact('ambulance')}
                 className="border-medical-blue text-medical-blue hover:bg-medical-blue hover:text-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 break-words"
               >
                 <span className="break-words">{t('hero.book_ambulance')}</span>
