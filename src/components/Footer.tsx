@@ -95,7 +95,7 @@ const Footer = () => {
                 <span className="text-gray-300">
                   Langstraße 37<br />
                   63486 Bruchköbel<br />
-                  Germany
+                  Deutschland
                 </span>
               </div>
             </div>
