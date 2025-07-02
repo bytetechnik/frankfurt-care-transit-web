@@ -1,10 +1,10 @@
-
 import { useState } from 'react';
-import { Menu, X, Phone, Ambulance } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from '/resources/img/logo.png'; // Adjust the path if needed
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,15 +38,24 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-medical-blue p-2 rounded-lg">
-              <Ambulance className="h-8 w-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-medical-blue">Taxi OM Krankentransport</h1>
-              <p className="text-sm text-gray-600">Rhein-Main Gebiet</p>
-            </div>
-          </Link>
+          <Link to="/" className="flex items-center space-x-4">
+  <div>
+    <img
+      src={logo}
+      alt="Taxi OM Logo"
+      className="h-20 w-20 object-contain drop-shadow-lg"
+    />
+  </div>
+  <div className="flex flex-col justify-center">
+    <h1 className="text-2xl font-bold text-medical-blue">Taxi OM Krankentransport</h1>
+    <p className="text-sm text-gray-600">Rhein-Main Gebiet</p>
+  </div>
+</Link>
+
+
+
+
+
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
