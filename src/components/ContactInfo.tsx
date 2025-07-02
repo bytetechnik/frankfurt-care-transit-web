@@ -12,7 +12,7 @@ const ContactInfo = () => {
       title: t('contact.emergency_hotline'),
       info: "+49 17 84 26 87 86",
       subinfo: t('contact.available_24_7'),
-      href: "tel:+4969123456789",
+      href: "tel:+491784268786",
       color: "emergency-amber"
     },
     {
